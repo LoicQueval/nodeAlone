@@ -1,0 +1,99 @@
+body{
+    margin: 0 0 0 31%;
+    font-family:"Arial", sans-serif;
+    width: 734px;
+}
+
+header{
+    background-image: url("Asset/Banniere.jpg");
+    background-size: cover;
+    display: flex;
+}
+
+h1 {
+    margin: 23px 0;
+    color: rgba(255, 255, 255, 0.71);
+    position: absolute;
+}
+
+.intro{
+    margin: 60px 0 0 0;
+    color: rgb(215, 0, 0);
+    position: absolute;
+    font-style: italic;
+    font-family: "Arial Black", sans-serif;
+    font-size: 14px;
+}
+
+img{
+    border-radius: 20px;
+    margin: 5px 10px 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+main{
+    background: rgba(0, 174, 201, 0.21);
+}
+
+.flex{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.down-head{
+    margin: 0 0 0 20px;
+    border-right: 1px solid rgb(255, 0, 0);
+    padding-right: 20px;
+    height: 10px;
+}
+
+p {
+    padding: 5px;
+    margin: 0 0 10px 0;
+    font-size: small;
+}
+
+.box{
+    margin-top: 10px;
+    width: 300px;
+    height: 715px;
+    border: 1px solid #808080;
+    text-align: center;
+    box-shadow: 4px 4px 2px grey;
+}
+
+footer{
+    padding: 17px;
+    text-align: center;
+    text-shadow: 2px 2px 3px grey;
+    background: rgba(0, 174, 201, 0.21);
+}
+
+h2 {
+    margin: 0;
+    background: rgba(128, 128, 128, 0.4);
+    font-size: x-large;
+    text-align: center;
+    border-style: groove none groove;
+    color: rgba(0, 0, 0, 0.71);
+}
+
+h3{
+    font-size: large;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+li{
+    font-size: smaller;
+    margin-right: 35px;
+    list-style-type: none;
+    padding-bottom: 5px;
+}
+
+span{
+    font-family: "fantasy";
+    font-size: medium;
+    font-style: italic;
+}

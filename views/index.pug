@@ -1,0 +1,67 @@
+html
+    head
+        link(href= "styles.css" rel= "stylesheet")
+        title= title
+    body
+        header
+
+            div
+                img(rel="Asset/myFace.jpg")
+            div
+                h1= name
+                p.intro #{introduction}
+
+        main
+            section.flex
+                p.down-head #{telephoneNumber}
+                p.down-head #{street}
+                p.down-head #{mail}
+                p.down-head #{brithday}
+                p #{gender}
+
+            div.flex
+                section.box
+                    h2 #{skills}
+
+                article
+                    h3 #{programmation}
+
+                    ul
+                        - const progs = ["Langages C","PHP","HTML 5","CSS 3","MSQL","Javascript","Jquery",]
+                        each item in progs
+                            li= item
+
+
+                article
+                    h3 #{langages}
+
+                    ul
+                        li <span> #{lang1} </span>Trés bien
+                        li <span> #{lang2} </span>Bien
+                        li <span> #{lang3} </span>Notions
+                        li <span> #{lang4} </span>Bien
+                        li <span> #{lang5} </span>Très bien
+                        li <span> #{lang6} </span>Notions
+
+                article
+                    h3 #{quality}
+                        p #{qualitys}
+
+                h2 #{others}
+                article
+                    h3 #{other}
+                        p #{interest}
+                        p #{sport}
+
+                section.box
+                    h2 #{diplome}
+                    article
+                        h3 #{bts}
+                            p #{lieu1}
+                            p #{info1}
+
+                article
+                    h3 #{bac}
+                        p #{lieu2}
+                        p #{info2}
+                h2 #{experiences}
