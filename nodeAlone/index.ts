@@ -1,5 +1,20 @@
 import express from "express";
-import {firebaseConfig} from './conf';
+
+/*
+const admin = require('cle');
+const serviceAccount = require('cle');
+*/
+
+admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore();
+
+
+
+
+
 
 const app = express();
 app.set('view engine', 'pug');
@@ -7,6 +22,8 @@ app.set('view engine', 'pug');
 app.use(express.static('views'));
 app.use(express.static('Asset'));
 
+
+/*
 app.get('/cv', (req, res) => {
     res.render('./index',
         {
@@ -53,6 +70,8 @@ app.get('/cv', (req, res) => {
             experiences: 'Expérience professionnel',
         });
 });
+*/
+
 
 app.get('/', (req, res) => {
     res.send('hello');
