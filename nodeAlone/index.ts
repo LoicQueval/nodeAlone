@@ -1,20 +1,25 @@
 import express from "express";
+import {HostelsModel} from './hostels.model'
 
 const admin = require('firebase-admin');
 const serviceAccount = require('../nodeAlone/cle.json');
 const app = express();
 
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://myazerty.firebaseio.com",
 });
 
 const db = admin.firestore();
+const ref = db.collection('hostels');
 
 app.get('/', async (req, res) => {
-    const hostels = await db.collection('hostels').get;
-    res.send(hostels);
-    console.log(hostels);
+    //const hostels : HostelsModel[] = [];
+    const hostelsref = await ref.get();
+    hostelsref.forEach(hostel => hostels.push(hostel.data() as HostelsModel));
+    res.send(hostelsref);
 });
+
 
 
 app.set('view engine', 'pug');

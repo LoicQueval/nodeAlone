@@ -16,13 +16,16 @@ const admin = require('firebase-admin');
 const serviceAccount = require('../nodeAlone/cle.json');
 const app = express_1.default();
 admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://myazerty.firebaseio.com",
 });
 const db = admin.firestore();
+const ref = db.collection('hostels');
 app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const hostels = yield db.collection('hostels').get;
-    res.send(hostels);
-    console.log(hostels);
+    //const hostels : HostelsModel[] = [];
+    const hostelsref = yield ref.get();
+    hostelsref.forEach(hostel => hostels.push(hostel.data()));
+    res.send(hostelsref);
 }));
 app.set('view engine', 'pug');
 app.use(express_1.default.static('views'));
