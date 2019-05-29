@@ -1,22 +1,29 @@
 import express from "express";
 
-/*
-const admin = require('cle');
-const serviceAccount = require('cle');
-*/
+const admin = require('firebase-admin');
+const serviceAccount = require('../nodeAlone/cle.json');
+const app = express();
+
 
 admin.initializeApp({
         credential: admin.credential.cert(serviceAccount)
 });
 
 const db = admin.firestore();
+/*
+db.collection('users').get()
+    .then((snapshot) => {
+        snapshot.forEach((doc) => {
+            console.log(doc.id, '=>', doc.data());
+        });
+    })
+    .catch((err) => {
+        console.log('Error getting documents', err);
+    });
+*/
 
 
 
-
-
-
-const app = express();
 app.set('view engine', 'pug');
 
 app.use(express.static('views'));

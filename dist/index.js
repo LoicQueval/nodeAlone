@@ -4,15 +4,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-/*
-const admin = require('cle');
-const serviceAccount = require('cle');
-*/
+const admin = require('firebase-admin');
+const serviceAccount = require('../nodeAlone/cle.json');
+const app = express_1.default();
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
 const db = admin.firestore();
-const app = express_1.default();
+/*
+db.collection('users').get()
+    .then((snapshot) => {
+        snapshot.forEach((doc) => {
+            console.log(doc.id, '=>', doc.data());
+        });
+    })
+    .catch((err) => {
+        console.log('Error getting documents', err);
+    });
+*/
 app.set('view engine', 'pug');
 app.use(express_1.default.static('views'));
 app.use(express_1.default.static('Asset'));
