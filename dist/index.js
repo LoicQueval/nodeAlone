@@ -20,7 +20,7 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const hostels = yield db.collection('hostels').doc('hostel1').get;
+    const hostels = yield db.collection('hostels').get;
     res.send(hostels);
     console.log(hostels);
 }));

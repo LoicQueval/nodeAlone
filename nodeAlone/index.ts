@@ -10,8 +10,8 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-app.get('/', async(req, res) => {
-    const hostels = await db.collection('hostels').doc('hostel1').get;
+app.get('/', async (req, res) => {
+    const hostels = await db.collection('hostels').get;
     res.send(hostels);
     console.log(hostels);
 });
