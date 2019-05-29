@@ -1,4 +1,12 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -11,17 +19,11 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
 });
 const db = admin.firestore();
-/*
-db.collection('users').get()
-    .then((snapshot) => {
-        snapshot.forEach((doc) => {
-            console.log(doc.id, '=>', doc.data());
-        });
-    })
-    .catch((err) => {
-        console.log('Error getting documents', err);
-    });
-*/
+app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const hostels = yield db.collection('hostels').doc('hostel1').get;
+    res.send(hostels);
+    console.log(hostels);
+}));
 app.set('view engine', 'pug');
 app.use(express_1.default.static('views'));
 app.use(express_1.default.static('Asset'));
@@ -73,10 +75,7 @@ app.get('/cv', (req, res) => {
         });
 });
 */
-app.get('/', (req, res) => {
-    res.send('hello');
-});
 app.listen(4000, () => {
-    console.log('Example app listening on port 4000!');
+    console.log('Complete on port 4000!');
 });
 //# sourceMappingURL=index.js.map
