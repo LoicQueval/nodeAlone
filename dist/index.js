@@ -11,21 +11,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const body_parser_1 = __importDefault(require("body-parser")); // important pour faire fonctionner req.body
 const express_1 = __importDefault(require("express"));
 const admin = require('firebase-admin');
-const serviceAccount = require('../nodeAlone/cle.json');
+const serviceAccount = require('../nodeAlone/cle.json'); // bug path node '-'
 const app = express_1.default();
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://myazerty.firebaseio.com",
 });
 const db = admin.firestore();
+app.use(body_parser_1.default());
 const ref = db.collection('hostels');
 app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    //const hostels : HostelsModel[] = [];
+    const hostels = [];
     const hostelsref = yield ref.get();
-    hostelsref.forEach(hostel => hostels.push(hostel.data()));
-    res.send(hostelsref);
+    hostelsref.forEach((hostel) => hostels.push(hostel.data())); // hostel : ... Webstorm correction '-'
+    res.send(hostels);
+}));
+app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const body = req.body;
+    yield ref.add(body);
+    res.send('post used');
+}));
+app.delete('/sup', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    yield ref.doc('hmwhigdhJbcwvXi74NVO').delete();
+    res.send('Hostel Delete');
+}));
+app.put('/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const body2 = req.body;
+    yield ref.doc(req.params.id).update(body2);
+    res.send('update new hostel');
+}));
+app.patch('/modif', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const body3 = req.body;
+    yield ref.doc('QII35LKumAVGyypWNB2y').update(body3);
+    res.send('Modifier');
 }));
 app.set('view engine', 'pug');
 app.use(express_1.default.static('views'));

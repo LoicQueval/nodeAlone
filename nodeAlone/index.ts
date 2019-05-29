@@ -1,8 +1,9 @@
+import bodyParser from 'body-parser'; // important pour faire fonctionner req.body
 import express from "express";
 import {HostelsModel} from './hostels.model'
 
 const admin = require('firebase-admin');
-const serviceAccount = require('../nodeAlone/cle.json');
+const serviceAccount = require('../nodeAlone/cle.json'); // bug path node '-'
 const app = express();
 
 admin.initializeApp({
@@ -11,22 +12,44 @@ admin.initializeApp({
 });
 
 const db = admin.firestore();
+app.use(bodyParser());
 const ref = db.collection('hostels');
 
+
 app.get('/', async (req, res) => {
-    //const hostels : HostelsModel[] = [];
+    const hostels: HostelsModel[] = [];
     const hostelsref = await ref.get();
-    hostelsref.forEach(hostel => hostels.push(hostel.data() as HostelsModel));
-    res.send(hostelsref);
+    hostelsref.forEach((hostel: { data: () => HostelsModel }) => hostels.push(hostel.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
+    res.send(hostels);
 });
 
+app.post('/add', async (req, res) => {
+    const body = req.body;
+    await ref.add(body);
+    res.send('post used')
+});
 
+app.delete('/sup', async (req, res) => {
+    await ref.doc('hmwhigdhJbcwvXi74NVO').delete();
+    res.send('Hostel Delete')
+});
+
+app.put('/:id', async (req, res) => {
+    const body2 = req.body;
+    await ref.doc(req.params.id).update(body2);
+    res.send('update new hostel')
+});
+
+app.patch('/modif', async (req, res) => {
+    const body3 = req.body;
+    await ref.doc('QII35LKumAVGyypWNB2y').update(body3);
+    res.send('Modifier')
+});
 
 app.set('view engine', 'pug');
 
 app.use(express.static('views'));
 app.use(express.static('Asset'));
-
 
 /*
 app.get('/cv', (req, res) => {
