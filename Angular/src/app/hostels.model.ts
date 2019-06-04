@@ -1,4 +1,4 @@
-interface HostelsModel {
+export interface HostelsModel {
   id : number,
   name : string,
   director : string,
