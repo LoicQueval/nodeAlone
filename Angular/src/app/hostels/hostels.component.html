@@ -1,0 +1,7 @@
+<div *ngFor="let hostels of (hostels$|async)">
+  <strong>Welcome to {{hostels.name}} !</strong>
+  <p>Our director is {{hostels.director}}</p>
+  <p>We are {{hostels.stars}} stars hostels with {{hostels.roomNumber}} rooms</p>
+  <p>Is a pool ? : {{hostels.pool}}</p>
+  <button (click)="test()">Supprimer</button>
+</div>

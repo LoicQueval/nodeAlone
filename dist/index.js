@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const body_parser_1 = __importDefault(require("body-parser")); // important pour faire fonctionner req.body
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const admin = require('firebase-admin');
 const serviceAccount = require('../nodeAlone/cle.json'); // bug path node '-'
 const app = express_1.default();
@@ -22,6 +23,7 @@ admin.initializeApp({
 });
 const db = admin.firestore();
 app.use(body_parser_1.default());
+app.use(cors_1.default());
 const ref = db.collection('hostels');
 app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostels = [];

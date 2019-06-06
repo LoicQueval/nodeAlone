@@ -2,6 +2,7 @@ export interface HostelsModel {
   id : number,
   name : string,
   director : string,
-  roomNumbers : number,
+  stars: number,
+  roomNumber : number,
   pool : boolean,
 }

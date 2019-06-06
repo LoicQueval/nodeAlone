@@ -1,6 +1,7 @@
 import bodyParser from 'body-parser'; // important pour faire fonctionner req.body
 import express from "express";
 import {HostelsModel} from './hostels.model'
+import cors from "cors";
 
 const admin = require('firebase-admin');
 const serviceAccount = require('../nodeAlone/cle.json'); // bug path node '-'
@@ -13,6 +14,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 app.use(bodyParser());
+app.use(cors());
 const ref = db.collection('hostels');
 
 
