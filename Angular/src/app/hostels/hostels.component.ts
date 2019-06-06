@@ -25,6 +25,7 @@ export class HostelsComponent implements OnInit {
         tap((hostels: HostelsModel[]) => this.hostels = hostels)
       )
       .subscribe();
+    console.log("coucou")
   }
 
   ngOnInit() {
