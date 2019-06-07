@@ -37,7 +37,7 @@ app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
     res.send('post used');
 }));
 app.delete('/sup', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    yield ref.doc('hmwhigdhJbcwvXi74NVO').delete();
+    yield ref.doc('YiYnO0YXmXmi4q664U1W').delete();
     res.send('Hostel Delete');
 }));
 app.put('/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {

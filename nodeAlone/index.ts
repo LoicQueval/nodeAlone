@@ -32,7 +32,7 @@ app.post('/add', async (req, res) => {
 });
 
 app.delete('/sup', async (req, res) => {
-    await ref.doc('hmwhigdhJbcwvXi74NVO').delete();
+    await ref.doc('YiYnO0YXmXmi4q664U1W').delete();
     res.send('Hostel Delete')
 });
 
