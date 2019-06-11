@@ -1,4 +1,13 @@
-div{
+div {
   background-color: red;
   color: darkblue;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    width: 10%;
+  }
 }

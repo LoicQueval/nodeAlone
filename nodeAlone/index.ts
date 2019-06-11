@@ -21,31 +21,31 @@ const ref = db.collection('hostels');
 app.get('/', async (req, res) => {
     const hostels: HostelsModel[] = [];
     const hostelsref = await ref.get();
-    hostelsref.forEach((hostel: { data: () => HostelsModel }) => hostels.push(hostel.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
+    hostelsref.forEach((hostel: { data: () => HostelsModel; }) => hostels.push(hostel.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
     res.send(hostels);
 });
 
 app.post('/add', async (req, res) => {
     const body = req.body;
     await ref.add(body);
-    res.send('post used')
+    res.send();
 });
 
 app.delete('/sup/:id', async (req, res) => {
     await ref.doc(req.params.id).delete();
-    res.send('Hostel Delete')
+    res.send()
 });
 
 app.put('/update/:id', async (req, res) => {
     const body2 = req.body;
     await ref.doc(req.params.id).update(body2);
-    res.send('update new hostel')
+    res.send()
 });
 
 app.patch('/modif/:id', async (req, res) => {
     const body3 = req.body;
     await ref.doc(req.params.id).update(body3);
-    res.send('Modifier')
+    res.send()
 });
 
 app.set('view engine', 'pug');

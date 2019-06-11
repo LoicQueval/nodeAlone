@@ -34,21 +34,21 @@ app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
 app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body = req.body;
     yield ref.add(body);
-    res.send('post used');
+    res.send();
 }));
 app.delete('/sup/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     yield ref.doc(req.params.id).delete();
-    res.send('Hostel Delete');
+    res.send();
 }));
 app.put('/update/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body2 = req.body;
     yield ref.doc(req.params.id).update(body2);
-    res.send('update new hostel');
+    res.send();
 }));
 app.patch('/modif/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body3 = req.body;
     yield ref.doc(req.params.id).update(body3);
-    res.send('Modifier');
+    res.send();
 }));
 app.set('view engine', 'pug');
 app.use(express_1.default.static('views'));

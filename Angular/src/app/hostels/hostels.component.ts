@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HostelsModel} from "../hostels.model";
-import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 //import {HostelsModel} from "../../../../nodeAlone/hostels.model";
 
@@ -11,29 +11,46 @@ import {tap} from "rxjs/operators";
   templateUrl: './hostels.component.html',
   styleUrls: ['./hostels.component.scss']
 })
-export class HostelsComponent implements OnInit {
-
-  constructor(private http: HttpClient) {
-  }
+export class HostelsComponent {
 
   hostels: HostelsModel[];
-  hostels$: Observable<HostelsModel[]>;
 
+  hostelForm: FormGroup;
 
-  test1() {
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+    this.getHostels()
+  }
+
+  initForm() {
+    this.hostelForm = this.fb.group({
+      name: ["", [Validators.required]]
+    })
+  }
+/*
+  loading() {
+    this.loading = false;
+  }
+*/
+  getHostels() {
+   // this.loading();
     //Read
-    this.hostels$ = this.http.get<HostelsModel[]>("http://localhost:4000");
-    this.hostels$
+    return this.http.get<HostelsModel[]>("http://localhost:4000")
       .pipe(
         tap((hostels: HostelsModel[]) => this.hostels = hostels)
       )
       .subscribe();
-    console.log('coucou')
   }
 
   test2() {
     //CreateToNothing
-    this.http.post<HostelsModel[]>('http://localhost:4000/add', {
+     return this.http.post<HostelsModel[]>('http://localhost:4000/add', {
       "name": "hotel des class",
       "director": "Sarida",
       "pool": true,
@@ -46,7 +63,7 @@ export class HostelsComponent implements OnInit {
 
   test3() {
     //Delete
-    this.http.delete<HostelsModel[]>('http://localhost:4000/sup/wV1VltYxvnRpD2s3kS83')
+    this.http.delete<HostelsModel[]>('http://localhost:4000/sup/1QO7AgQpf5RABNGPI9Br')
       .pipe()
       .subscribe();
   }
@@ -73,8 +90,4 @@ export class HostelsComponent implements OnInit {
       .subscribe();
   }
 
-
-  ngOnInit() {
-
-  }
 }
