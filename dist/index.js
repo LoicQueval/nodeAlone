@@ -36,18 +36,18 @@ app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
     yield ref.add(body);
     res.send('post used');
 }));
-app.delete('/sup', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    yield ref.doc('YiYnO0YXmXmi4q664U1W').delete();
+app.delete('/sup/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    yield ref.doc(req.params.id).delete();
     res.send('Hostel Delete');
 }));
-app.put('/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.put('/update/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body2 = req.body;
     yield ref.doc(req.params.id).update(body2);
     res.send('update new hostel');
 }));
-app.patch('/modif', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.patch('/modif/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body3 = req.body;
-    yield ref.doc('QII35LKumAVGyypWNB2y').update(body3);
+    yield ref.doc(req.params.id).update(body3);
     res.send('Modifier');
 }));
 app.set('view engine', 'pug');

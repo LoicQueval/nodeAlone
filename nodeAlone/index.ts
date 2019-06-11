@@ -31,20 +31,20 @@ app.post('/add', async (req, res) => {
     res.send('post used')
 });
 
-app.delete('/sup', async (req, res) => {
-    await ref.doc('YiYnO0YXmXmi4q664U1W').delete();
+app.delete('/sup/:id', async (req, res) => {
+    await ref.doc(req.params.id).delete();
     res.send('Hostel Delete')
 });
 
-app.put('/:id', async (req, res) => {
+app.put('/update/:id', async (req, res) => {
     const body2 = req.body;
     await ref.doc(req.params.id).update(body2);
     res.send('update new hostel')
 });
 
-app.patch('/modif', async (req, res) => {
+app.patch('/modif/:id', async (req, res) => {
     const body3 = req.body;
-    await ref.doc('QII35LKumAVGyypWNB2y').update(body3);
+    await ref.doc(req.params.id).update(body3);
     res.send('Modifier')
 });
 

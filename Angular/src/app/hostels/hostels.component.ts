@@ -18,50 +18,63 @@ export class HostelsComponent implements OnInit {
 
   hostels: HostelsModel[];
   hostels$: Observable<HostelsModel[]>;
-/*
-  test() {
+
+
+  test1() {
+    //Read
     this.hostels$ = this.http.get<HostelsModel[]>("http://localhost:4000");
     this.hostels$
       .pipe(
         tap((hostels: HostelsModel[]) => this.hostels = hostels)
       )
       .subscribe();
-    console.log("coucou")
+    console.log('coucou')
   }
-*/
+
+  test2() {
+    //CreateToNothing
+    this.http.post<HostelsModel[]>('http://localhost:4000/add', {
+      "name": "hotel des class",
+      "director": "Sarida",
+      "pool": true,
+      "stars": 1,
+      "roomNumber": 43
+    })
+      .pipe()
+      .subscribe();
+  }
+
+  test3() {
+    //Delete
+    this.http.delete<HostelsModel[]>('http://localhost:4000/sup/wV1VltYxvnRpD2s3kS83')
+      .pipe()
+      .subscribe();
+  }
+
+  test4() {
+    //Update
+    this.http.put<HostelsModel[]>('http://localhost:4000/update/bnzY2faEXawvwhAR6I1n', {
+      "name": "hotel des class",
+      "director": "Sarida",
+      "pool": true,
+      "stars": 1,
+      "roomNumber": 123
+    })
+      .pipe()
+      .subscribe();
+  }
+
+  test5() {
+    //CreateToSomething
+    this.http.patch<HostelsModel[]>('http://localhost:4000/modif/bnzY2faEXawvwhAR6I1n', {
+      "name": "hotel des for",
+    })
+      .pipe()
+      .subscribe();
+  }
+
+
   ngOnInit() {
 
-    this.hostels$ = this.http.get<HostelsModel[]>("http://localhost:4000");
-    this.hostels$
-      .pipe(
-        tap((hostels: HostelsModel[]) => this.hostels = hostels)
-      )
-      .subscribe();
-
-
-    this.http.post('http://localhost:4000/add', {
-      "name": "hotel des class",
-      "director": "Sarida",
-      "pool": true,
-      "stars": 1,
-      "roomNumber": 42
-    })
-      .pipe()
-      .subscribe();
-
-
-    this.http.delete('http://localhost:4000/sup')
-      .pipe()
-      .subscribe();
-
-    this.http.put('http://localhost:4000/:id', {
-      "name": "hotel des class",
-      "director": "Sarida",
-      "pool": true,
-      "stars": 1,
-      "roomNumber": 42
-    })
-      .pipe()
-      .subscribe();
   }
 }

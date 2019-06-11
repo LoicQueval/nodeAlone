@@ -1,7 +1,11 @@
+<button (click)="test1()">Read test</button>
+<button (click)="test2()">Post test</button>
+<button (click)="test3()">Delete test</button>
+<button (click)="test4()">Update test</button>
+<button (click)="test5()">Modifier test</button>
 <div *ngFor="let hostels of (hostels$|async)">
   <strong>Welcome to {{hostels.name}} !</strong>
   <p>Our director is {{hostels.director}}</p>
   <p>We are {{hostels.stars}} stars hostels with {{hostels.roomNumber}} rooms</p>
   <p>Is a pool ? : {{hostels.pool}}</p>
-  <button (click)="test()">Supprimer</button>
 </div>
