@@ -14,7 +14,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class HostelsComponent {
 
   hostels: HostelsModel[];
-
   hostelForm: FormGroup;
 
   constructor(
@@ -30,16 +29,15 @@ export class HostelsComponent {
 
   initForm() {
     this.hostelForm = this.fb.group({
-      name: ["", [Validators.required]]
+      name: ["", [Validators.required, Validators.minLength(5)]]
     })
   }
-/*
-  loading() {
-    this.loading = false;
+
+  submitForm(){
+    console.log(this.hostelForm.value);
   }
-*/
+
   getHostels() {
-   // this.loading();
     //Read
     return this.http.get<HostelsModel[]>("http://localhost:4000")
       .pipe(
@@ -48,9 +46,9 @@ export class HostelsComponent {
       .subscribe();
   }
 
-  test2() {
+  postHostel() {
     //CreateToNothing
-     return this.http.post<HostelsModel[]>('http://localhost:4000/add', {
+     return this.http.post<HostelsModel[]>('http://localhost:4000', {
       "name": "hotel des class",
       "director": "Sarida",
       "pool": true,

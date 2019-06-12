@@ -1,7 +1,7 @@
 <div>
-  <form [formGroup]="hostelForm">
+  <form [formGroup]="hostelForm" (ngSubmit)="submitForm()">
     <label>Name
-      <input type="text" formControlName="name" >
+      <input type="text" required formControlName="name" >
     </label>
   </form>
 </div>
@@ -12,7 +12,7 @@
 <button (click)="test4()">Update</button>
 <button (click)="test5()">Modifier</button>
 
-<div *ngFor="let hostels of (hostels$|async)">
+<div *ngFor="let hostels of hostels">
   <strong>Welcome to {{hostels.name}} !</strong>
   <p>Our director is {{hostels.director}}</p>
   <p>We are {{hostels.stars}} stars hostels with {{hostels.roomNumber}} rooms</p>
