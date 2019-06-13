@@ -21,13 +21,13 @@ const ref = db.collection('hostels');
 app.get('/', async (req, res) => {
     const hostels: HostelsModel[] = [];
     const hostelsref = await ref.get();
-    hostelsref.forEach((hostel: { data: () => HostelsModel; }) => hostels.push(hostel.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
+    hostelsref.forEach((value: { data: () => HostelsModel; }) => hostels.push(value.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
     res.send(hostels);
 });
 
 app.post('/add', async (req, res) => {
     const hostel: HostelsModel = req.body;
-    const newHostel = await ref.add(hostel);
+    await ref.add(hostel);
     res.send(hostel);
 });
 

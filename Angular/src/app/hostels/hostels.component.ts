@@ -16,6 +16,7 @@ export class HostelsComponent {
   hostels: HostelsModel[];
   hostelForm: FormGroup;
   isLoading = false;
+  isReading = false;
 
   constructor(
     private http: HttpClient,
@@ -26,7 +27,6 @@ export class HostelsComponent {
   get name(){
     return this.hostelForm.get('name')
   }
-
   get director(){
     return this.hostelForm.get('director')
   }
@@ -60,6 +60,7 @@ export class HostelsComponent {
   }
 
   getHostels() {
+    this.isReading = !this.isReading;
     //Read
     return this.http.get<HostelsModel[]>("http://localhost:4000")
       .pipe(

@@ -28,12 +28,12 @@ const ref = db.collection('hostels');
 app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostels = [];
     const hostelsref = yield ref.get();
-    hostelsref.forEach((hostel) => hostels.push(hostel.data())); // hostel : ... Webstorm correction '-'
+    hostelsref.forEach((value) => hostels.push(value.data())); // hostel : ... Webstorm correction '-'
     res.send(hostels);
 }));
 app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostel = req.body;
-    const newHostel = yield ref.add(hostel);
+    yield ref.add(hostel);
     res.send(hostel);
 }));
 app.delete('/sup/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
