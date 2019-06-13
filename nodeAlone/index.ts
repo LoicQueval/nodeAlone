@@ -26,9 +26,9 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/add', async (req, res) => {
-    const body = req.body;
-    await ref.add(body);
-    res.send();
+    const hostel: HostelsModel = req.body;
+    const newHostel = await ref.add(hostel);
+    res.send(hostel);
 });
 
 app.delete('/sup/:id', async (req, res) => {

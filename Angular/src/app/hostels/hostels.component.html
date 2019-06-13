@@ -1,16 +1,42 @@
-<div>
-  <form [formGroup]="hostelForm" (ngSubmit)="submitForm()">
+<div *ngIf="isLoading">CHARGEMENT !!!!!!!!</div>
+
+<form [formGroup]="hostelForm" (ngSubmit)="submitForm()">
+
+  <div *ngIf="hostelForm.invalid && hostelForm.dirty">ERROR FORMULAIRE!</div>
+
+  <ng-container *ngIf="!isLoading">
     <label>Name
-      <input type="text" required formControlName="name" >
+      <input type="text" required formControlName="name">
+      <div *ngIf="name.invalid && name.dirty">Erreur Name</div>
     </label>
-  </form>
-</div>
+
+    <label>Director
+      <input type="text" required formControlName="director">
+      <div *ngIf="director.invalid && director.dirty">Erreur director</div>
+    </label>
+
+    <label>Stars
+      <input type="number" required formControlName="stars">
+      <div *ngIf="stars.invalid && stars.dirty">Erreur Stars</div>
+    </label>
+
+    <label>RoomNumber
+      <input type="number" required formControlName="roomNumber">
+      <div *ngIf="roomNumber.invalid && roomNumber.dirty">Erreur RoomNumber</div>
+    </label>
+
+    <label>Pool
+      <input type="boolean" required formControlName="pool">
+      <div *ngIf="pool.invalid && pool.dirty">Erreur Pool</div>
+    </label>
+
+    <button (click)="hostelForm.reset()" type="button">Reset</button>
+    <button type="submit">Valider</button>
+  </ng-container>
+</form>
+
 
 <button (click)="getHostels()">Read</button>
-<button (click)="test2()">Post</button>
-<button (click)="test3()">Delete</button>
-<button (click)="test4()">Update</button>
-<button (click)="test5()">Modifier</button>
 
 <div *ngFor="let hostels of hostels">
   <strong>Welcome to {{hostels.name}} !</strong>

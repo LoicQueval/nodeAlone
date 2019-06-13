@@ -32,9 +32,9 @@ app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     res.send(hostels);
 }));
 app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const body = req.body;
-    yield ref.add(body);
-    res.send();
+    const hostel = req.body;
+    const newHostel = yield ref.add(hostel);
+    res.send(hostel);
 }));
 app.delete('/sup/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     yield ref.doc(req.params.id).delete();

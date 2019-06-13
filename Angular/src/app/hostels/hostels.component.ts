@@ -15,6 +15,7 @@ export class HostelsComponent {
 
   hostels: HostelsModel[];
   hostelForm: FormGroup;
+  isLoading = false;
 
   constructor(
     private http: HttpClient,
@@ -22,40 +23,58 @@ export class HostelsComponent {
   ) {
   }
 
+  get name(){
+    return this.hostelForm.get('name')
+  }
+
+  get director(){
+    return this.hostelForm.get('director')
+  }
+  get stars(){
+    return this.hostelForm.get('stars')
+  }
+  get roomNumber(){
+    return this.hostelForm.get('roomNumber')
+  }
+  get pool(){
+    return this.hostelForm.get('pool')
+  }
+
   ngOnInit(): void {
     this.initForm();
-    this.getHostels()
   }
 
   initForm() {
     this.hostelForm = this.fb.group({
-      name: ["", [Validators.required, Validators.minLength(5)]]
+      name: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      director: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      stars: [0, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      roomNumber: [0, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      pool: ["true or false", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
     })
   }
 
-  submitForm(){
+  submitForm() {
     console.log(this.hostelForm.value);
+    this.postHostel(this.hostelForm.value)
   }
 
   getHostels() {
     //Read
     return this.http.get<HostelsModel[]>("http://localhost:4000")
       .pipe(
-        tap((hostels: HostelsModel[]) => this.hostels = hostels)
+        tap(hostels => this.hostels = hostels)
       )
       .subscribe();
   }
 
-  postHostel() {
+  postHostel(hostel : HostelsModel) {
     //CreateToNothing
-     return this.http.post<HostelsModel[]>('http://localhost:4000', {
-      "name": "hotel des class",
-      "director": "Sarida",
-      "pool": true,
-      "stars": 1,
-      "roomNumber": 43
-    })
-      .pipe()
+    this.isLoading = true;
+    this.http.post<HostelsModel[]>('http://localhost:4000/add', hostel)
+      .pipe(
+        tap(()=> this.isLoading = false)
+      )
       .subscribe();
   }
 
