@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts": "cd ./nodeAlone && tsc",
-    "node": "nodemon ./dist/index.js"
+    "node": "nodemon dist/index.js"
   },
   "keywords": [],
   "author": "",
