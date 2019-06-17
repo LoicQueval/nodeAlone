@@ -13,3 +13,4 @@ exports.on_hostel_created = functions.firestore
         newHotel.created = admin.firestore.FieldValue.serverTimestamp();
         return snap.ref.set(newHotel)
     });
+
