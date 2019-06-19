@@ -1,7 +1,8 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CreateRoomComponent} from "./create-room.component";
-import {CreateRoomRouting} from "./create-room.routing.module";
+import {CreateRoomRoutingModule} from "./create-room.routing.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -9,7 +10,8 @@ import {CreateRoomRouting} from "./create-room.routing.module";
   ],
   imports: [
     CommonModule,
-    CreateRoomRouting
+    CreateRoomRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class CreateRoomModule {

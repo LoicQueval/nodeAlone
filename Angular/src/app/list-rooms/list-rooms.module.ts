@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ListRoomsComponent} from "./list-rooms.component";
 import {RouterModule} from "@angular/router";
-import {ListRoomsRouting} from "./list-rooms.routing.module";
+import {ListRoomsRoutingModule} from "./list-rooms.routing.module";
 
 @NgModule({
   declarations: [
@@ -11,7 +11,7 @@ import {ListRoomsRouting} from "./list-rooms.routing.module";
   imports: [
     CommonModule,
     RouterModule,
-    ListRoomsRouting
+    ListRoomsRoutingModule
   ]
 })
 export class ListRoomsModule {

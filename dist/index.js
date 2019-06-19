@@ -25,6 +25,7 @@ const db = admin.firestore();
 app.use(body_parser_1.default());
 app.use(cors_1.default());
 const ref = db.collection('hostels');
+const ref2 = db.collection('rooms');
 app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostels = [];
     const hostelsref = yield ref.get();
@@ -35,6 +36,11 @@ app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostel = req.body;
     yield ref.add(hostel);
     res.send(hostel);
+}));
+app.post('/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const room = req.body;
+    yield ref2.add(room);
+    res.send(room);
 }));
 app.delete('/sup/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     yield ref.doc(req.params.id).delete();

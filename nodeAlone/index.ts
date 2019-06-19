@@ -2,6 +2,7 @@ import bodyParser from 'body-parser'; // important pour faire fonctionner req.bo
 import express from "express";
 import {HostelsModel} from './hostels.model'
 import cors from "cors";
+import {RoomsModel} from "./rooms.model";
 
 const admin = require('firebase-admin');
 const serviceAccount = require('../nodeAlone/cle.json'); // bug path node '-'
@@ -16,6 +17,7 @@ const db = admin.firestore();
 app.use(bodyParser());
 app.use(cors());
 const ref = db.collection('hostels');
+const ref2 = db.collection('rooms');
 
 
 app.get('/', async (req, res) => {
@@ -29,6 +31,12 @@ app.post('/add', async (req, res) => {
     const hostel: HostelsModel = req.body;
     await ref.add(hostel);
     res.send(hostel);
+});
+
+app.post('/rooms', async (req, res) => {
+    const room: RoomsModel = req.body;
+    await ref2.add(room);
+    res.send(room);
 });
 
 app.delete('/sup/:id', async (req, res) => {

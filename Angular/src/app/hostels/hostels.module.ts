@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {HostelsComponent} from "./hostels.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {RouterModule} from "@angular/router";
-import {HostelsRouting} from "./hostels.routing.module";
+import {HostelsRoutingModule} from "./hostels.routing.module";
+
 
 
 @NgModule({
@@ -12,7 +13,7 @@ import {HostelsRouting} from "./hostels.routing.module";
   ],
   imports: [
     CommonModule,
-    HostelsRouting,
+    HostelsRoutingModule,
     ReactiveFormsModule,
     RouterModule
   ]

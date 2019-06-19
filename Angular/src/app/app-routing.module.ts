@@ -7,7 +7,7 @@ const routes: Routes = [
     loadChildren: './create-room/create-room.module#CreateRoomModule'
   },
   {
-    path: 'hostels',
+    path: 'create-hostel',
     loadChildren: './hostels/hostels.module#HostelsModule'
   },
   {
