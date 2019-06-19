@@ -4,7 +4,6 @@ import {HostelsModel} from "../hostels.model";
 import {tap} from "rxjs/operators";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
-//import {HostelsModel} from "../../../../nodeAlone/hostels.model";
 
 @Component({
   selector: 'app-hostels',

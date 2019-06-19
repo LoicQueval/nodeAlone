@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './create-room/create-room.module#CreateRoomModule'
   },
   {
+    path: 'hostels',
+    loadChildren: './hostels/hostels.module#HostelsModule'
+  },
+  {
     path: 'list-rooms',
     loadChildren: './list-rooms/list-rooms.module#ListRoomsModule'
   },
