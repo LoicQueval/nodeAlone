@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {tap} from "rxjs/operators";
-import {RoomsModel} from "./rooms.model";
+import {map, tap} from "rxjs/operators";
+import {HostelsModel, RoomsModel} from "./rooms.model";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-create-room',
@@ -55,17 +56,33 @@ export class CreateRoomComponent{
   getRooms() {
     this.isReading = !this.isReading;
     //Read
-    return this.httpClient.get<RoomsModel[]>("http://localhost:4000")
+    return this.httpClient.get<RoomsModel[]>("http://localhost:4000 ")
       .pipe(
         tap(rooms => this.rooms = rooms)
       )
       .subscribe();
   }
+/*
+  getRoomsById() {
+    this.isReading = !this.isReading;
+    //Read
+    forkJoin([
+      this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father),
+      this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father + '/rooms'),
+      ])
+      .pipe(
+        map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {return { ...hostel, ...rooms}}),
+      )
+      .subscribe()
+  }
+*/
+
+  private _father = '9bd5Ggz7XRiXqTA4Gzkv';
 
   postRoom(room: RoomsModel) {
     //CreateToNothing
     this.isLoading = true;
-    this.httpClient.post<RoomsModel[]>('http://localhost:4000/rooms', room)
+    this.httpClient.post<RoomsModel[]>('http://localhost:4000/rooms', {...room, parent : this._father})
       .pipe(
         tap(() => this.isLoading = false)
       )
