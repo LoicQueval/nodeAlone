@@ -4,14 +4,16 @@ export interface HostelsModel {
   stars: number,
   roomNumber : number,
   pool : boolean,
-  uId: string,
+  uid: string,
   created: any
 }
 
 export interface RoomsModel {
   name : string,
-  peopleName : string,
-  size: number,
-  uid : string,
-  created : any,
+  director : string,
+  stars: number,
+  roomNumber : number,
+  pool : boolean,
+  uid: string,
+  created: any
 }

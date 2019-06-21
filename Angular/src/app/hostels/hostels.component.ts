@@ -35,9 +35,6 @@ export class HostelsComponent {
   get roomNumber(){
     return this.hostelForm.get('roomNumber')
   }
-  get pool(){
-    return this.hostelForm.get('pool')
-  }
 
   ngOnInit(): void {
     this.initForm();
@@ -47,9 +44,8 @@ export class HostelsComponent {
     this.hostelForm = this.fb.group({
       name: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       director: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      stars: [0, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      roomNumber: [0, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      pool: ["true or false", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]]
+      stars: [0, [Validators.required]],
+      roomNumber: [0, [Validators.required]],
     })
   }
 

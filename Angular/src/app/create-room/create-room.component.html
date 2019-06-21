@@ -23,6 +23,12 @@
       </label>
 
 
+      <label>In hostel
+        <select type="text" required formControlName="parent">
+          <option *ngFor="let hostel of hostels" [value]="hostel.uid">{{hostel.name}}</option>
+        </select>
+      </label>
+
       <button (click)="roomForm.reset()" type="button">Reset</button>
       <button type="submit">Valider</button>
 

@@ -3,7 +3,10 @@
 
   <form [formGroup]="hostelForm" (ngSubmit)="submitForm()">
 
-    <div *ngIf="hostelForm.invalid && hostelForm.dirty">ERROR FORMULAIRE!</div>
+    <div
+      *ngIf="name.invalid && name.dirty || director.invalid && director.dirty|| stars.invalid && stars.dirty|| roomNumber.invalid && roomNumber.dirty">
+      ERROR FORMULAIRE!
+    </div>
 
     <ng-container *ngIf="!isLoading">
 
@@ -27,9 +30,8 @@
         <div *ngIf="roomNumber.invalid && roomNumber.dirty">Erreur RoomNumber</div>
       </label>
 
-      <label>Pool
-        <input type="string" required formControlName="pool">
-        <div *ngIf="pool.invalid && pool.dirty">Erreur Pool</div>
+      <label>Pool ?
+        <input type="checkbox" required>
       </label>
 
       <button (click)="hostelForm.reset()" type="button">Reset</button>

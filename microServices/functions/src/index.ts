@@ -9,7 +9,7 @@ exports.on_hostel_created = functions.firestore
     .onCreate((snap, context) => {
 
         const newHotel: HostelsModel = snap.data() as HostelsModel;
-        newHotel.uId = snap.id;
+        newHotel.uid = snap.id;
         newHotel.created = admin.firestore.FieldValue.serverTimestamp();
         return snap.ref.set(newHotel)
     });
@@ -22,4 +22,5 @@ exports.on_room_created = functions.firestore
         newRoom.created = admin.firestore.FieldValue.serverTimestamp();
         return snap.ref.set(newRoom)
     });
+
 

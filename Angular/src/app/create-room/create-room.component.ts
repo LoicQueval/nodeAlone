@@ -1,18 +1,18 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {map, tap} from "rxjs/operators";
+import {tap} from "rxjs/operators";
 import {HostelsModel, RoomsModel} from "./rooms.model";
-import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-create-room',
   templateUrl: './create-room.component.html',
   styleUrls: ['./create-room.component.scss']
 })
-export class CreateRoomComponent{
+export class CreateRoomComponent {
 
   rooms: RoomsModel[];
+  hostels: HostelsModel[];
   roomForm: FormGroup;
   isLoading = false;
   isReading = false;
@@ -36,8 +36,13 @@ export class CreateRoomComponent{
     return this.roomForm.get('size')
   }
 
+  get parent() {
+    return this.roomForm.get('parent')
+  }
+
   ngOnInit(): void {
     this.initForm();
+    this.getHostels();
   }
 
   initForm() {
@@ -45,6 +50,7 @@ export class CreateRoomComponent{
       name: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       peopleName: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       size: [0, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      parent: ["", [Validators.required]]
     })
   }
 
@@ -62,27 +68,36 @@ export class CreateRoomComponent{
       )
       .subscribe();
   }
-/*
-  getRoomsById() {
+
+  getHostels() {
     this.isReading = !this.isReading;
     //Read
-    forkJoin([
-      this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father),
-      this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father + '/rooms'),
-      ])
+    return this.httpClient.get<HostelsModel[]>("http://localhost:4000")
       .pipe(
-        map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {return { ...hostel, ...rooms}}),
+        tap(hostels => this.hostels = hostels)
       )
-      .subscribe()
+      .subscribe();
   }
-*/
 
-  private _father = '9bd5Ggz7XRiXqTA4Gzkv';
+  /*
+    getRoomsById() {
+      this.isReading = !this.isReading;
+      //Read
+      forkJoin([
+        this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father),
+        this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father + '/rooms'),
+        ])
+        .pipe(
+          map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {return { ...hostel, ...rooms}}),
+        )
+        .subscribe()
+    }
+  */
 
   postRoom(room: RoomsModel) {
     //CreateToNothing
     this.isLoading = true;
-    this.httpClient.post<RoomsModel[]>('http://localhost:4000/rooms', {...room, parent : this._father})
+    this.httpClient.post<RoomsModel[]>('http://localhost:4000/rooms', room)
       .pipe(
         tap(() => this.isLoading = false)
       )
