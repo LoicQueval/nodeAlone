@@ -1,4 +1,4 @@
-<article>
+<div>
   <div *ngIf="isLoading">CHARGEMENT !!!!!!!!</div>
 
   <form [formGroup]="hostelForm" (ngSubmit)="submitForm()">
@@ -31,14 +31,12 @@
       </label>
 
       <label>Pool ?
-        <input type="checkbox" required>
+        <input type="checkbox" required formControlName="pool">
       </label>
 
       <button (click)="hostelForm.reset()" type="button">Reset</button>
       <button type="submit">Valider</button>
-
     </ng-container>
-
   </form>
 
   <button (click)="getHostels()">Read</button>
@@ -51,6 +49,7 @@
       <p>Is a pool ? : {{hostels.pool}}</p>
     </div>
   </ng-container>
-</article>
+
+</div>
 <router-outlet></router-outlet>
 

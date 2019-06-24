@@ -46,6 +46,7 @@ export class HostelsComponent {
       director: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       stars: [0, [Validators.required]],
       roomNumber: [0, [Validators.required]],
+      pool: [false,[Validators.required]]
     })
   }
 
@@ -57,7 +58,7 @@ export class HostelsComponent {
   getHostels() {
     this.isReading = !this.isReading;
     //Read
-    return this.http.get<HostelsModel[]>("http://localhost:4000")
+    return this.http.get<HostelsModel[]>("http://localhost:4000/hostels")
       .pipe(
         tap(hostels => this.hostels = hostels)
       )
@@ -73,6 +74,9 @@ export class HostelsComponent {
       )
       .subscribe();
   }
+
+
+
 
   test3() {
     //Delete

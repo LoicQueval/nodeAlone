@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {tap} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {HostelsModel, RoomsModel} from "./rooms.model";
+import {forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-create-room',
@@ -23,7 +24,6 @@ export class CreateRoomComponent {
   ) {
   }
 
-
   get name() {
     return this.roomForm.get('name')
   }
@@ -34,10 +34,6 @@ export class CreateRoomComponent {
 
   get size() {
     return this.roomForm.get('size')
-  }
-
-  get parent() {
-    return this.roomForm.get('parent')
   }
 
   ngOnInit(): void {
@@ -62,7 +58,7 @@ export class CreateRoomComponent {
   getRooms() {
     this.isReading = !this.isReading;
     //Read
-    return this.httpClient.get<RoomsModel[]>("http://localhost:4000 ")
+    return this.httpClient.get<RoomsModel[]>("http://localhost:4000/rooms ")
       .pipe(
         tap(rooms => this.rooms = rooms)
       )
@@ -72,27 +68,30 @@ export class CreateRoomComponent {
   getHostels() {
     this.isReading = !this.isReading;
     //Read
-    return this.httpClient.get<HostelsModel[]>("http://localhost:4000")
+    return this.httpClient.get<HostelsModel[]>("http://localhost:4000/hostels")
       .pipe(
         tap(hostels => this.hostels = hostels)
       )
       .subscribe();
   }
+/*
+  getRoomsBy() {
+    this.isReading = !this.isReading;
+    //Read
+    forkJoin([
+      this.httpClient.get("http://localhost:4000/hostels"),
+      this.httpClient.get("http://localhost:4000/hostels" + '/rooms'),
+    ])
+      .pipe(
+        map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {
+          return {...hostel, ...rooms}
+        }),
+      )
+      .subscribe()
+  }
 
-  /*
-    getRoomsById() {
-      this.isReading = !this.isReading;
-      //Read
-      forkJoin([
-        this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father),
-        this.httpClient.get<RoomsModel[]>("http://localhost:4000/hostels" + this._father + '/rooms'),
-        ])
-        .pipe(
-          map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {return { ...hostel, ...rooms}}),
-        )
-        .subscribe()
-    }
-  */
+
+ */
 
   postRoom(room: RoomsModel) {
     //CreateToNothing

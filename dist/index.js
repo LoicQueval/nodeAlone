@@ -26,11 +26,29 @@ app.use(body_parser_1.default());
 app.use(cors_1.default());
 const ref = db.collection('hostels');
 const ref2 = db.collection('rooms');
-app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.get('/hostels', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostels = [];
     const hostelsref = yield ref.get();
     hostelsref.forEach((value) => hostels.push(value.data())); // hostel : ... Webstorm correction '-'
     res.send(hostels);
+}));
+app.get('/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const rooms = [];
+    const roomsref = yield ref2.get();
+    roomsref.forEach((value) => rooms.push(value.data())); // hostel : ... Webstorm correction '-'
+    res.send(rooms);
+}));
+app.get('/hostels/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const ref = db.collection('hostels').doc(req.params.id);
+    const hostel = yield ref.get();
+    res.send(hostel.data());
+}));
+app.get('/hostels/:id/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const ref = db.collection('rooms').where('parent', '==', req.params.id);
+    const roomsRef = yield ref.get();
+    const rooms = [];
+    roomsRef.forEach((room) => rooms.push(room.data()));
+    res.send(rooms);
 }));
 app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostel = req.body;

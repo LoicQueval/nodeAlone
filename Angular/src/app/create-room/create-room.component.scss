@@ -1,5 +1,4 @@
-
-article {
+div{
   padding: 16% 30%;
   margin: 0 10%;
   background-color: aqua;
@@ -8,7 +7,8 @@ article {
     background-color: grey;
     border: 2px solid black;
     color: darkblue;
-    margin: 5px;
+    padding: 10px;
+    margin: 2%;
   }
 
   button {
@@ -20,6 +20,9 @@ article {
     flex-direction: column;
     margin-bottom: 5px;
 
+    select{
+      width: 205px;
+    }
     input {
       width: 200px;
     }

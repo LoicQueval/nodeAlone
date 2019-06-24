@@ -1,18 +1,13 @@
-
-article {
+div {
   padding: 16% 30%;
+  color: darkblue;
   margin: 0 10%;
   background-color: coral;
 
   div {
-    background-color: grey;
     border: 2px solid black;
-    color: darkblue;
-    margin: 5px;
-  }
-
-  button {
-    margin: 0 0 5px 5px;
+    margin: 2%;
+    padding: 10px;
   }
 
   label {
@@ -24,7 +19,14 @@ article {
       width: 200px;
     }
   }
+
+  button {
+    margin: 0 0 5px 5px;
+  }
 }
+
+
+
 
 
 

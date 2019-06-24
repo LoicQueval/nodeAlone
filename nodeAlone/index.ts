@@ -16,15 +16,37 @@ admin.initializeApp({
 const db = admin.firestore();
 app.use(bodyParser());
 app.use(cors());
+
 const ref = db.collection('hostels');
 const ref2 = db.collection('rooms');
 
 
-app.get('/', async (req, res) => {
+app.get('/hostels', async (req, res) => {
     const hostels: HostelsModel[] = [];
     const hostelsref = await ref.get();
     hostelsref.forEach((value: { data: () => HostelsModel; }) => hostels.push(value.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
     res.send(hostels);
+});
+
+app.get('/rooms', async (req, res) => {
+    const rooms: RoomsModel[] = [];
+    const roomsref = await ref2.get();
+    roomsref.forEach((value: { data: () => RoomsModel; }) => rooms.push(value.data() as RoomsModel)); // hostel : ... Webstorm correction '-'
+    res.send(rooms);
+});
+
+app.get('/hostels/:id', async (req, res) => {
+    const ref = db.collection('hostels').doc(req.params.id);
+    const hostel = await ref.get();
+    res.send(hostel.data());
+});
+
+app.get('/hostels/:id/rooms', async (req, res) => {
+    const ref = db.collection('rooms').where('parent','==', req.params.id);
+    const roomsRef = await ref.get();
+    const rooms : RoomsModel[] = [];
+    roomsRef.forEach((room: { data: () => RoomsModel; }) => rooms.push(room.data() as RoomsModel));
+    res.send(rooms);
 });
 
 app.post('/add', async (req, res) => {
