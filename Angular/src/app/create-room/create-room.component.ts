@@ -74,13 +74,13 @@ export class CreateRoomComponent {
       )
       .subscribe();
   }
-/*
+
   getRoomsBy() {
     this.isReading = !this.isReading;
     //Read
     forkJoin([
       this.httpClient.get("http://localhost:4000/hostels"),
-      this.httpClient.get("http://localhost:4000/hostels" + '/rooms'),
+      this.httpClient.get("http://localhost:4000/rooms"),
     ])
       .pipe(
         map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {
@@ -89,9 +89,6 @@ export class CreateRoomComponent {
       )
       .subscribe()
   }
-
-
- */
 
   postRoom(room: RoomsModel) {
     //CreateToNothing

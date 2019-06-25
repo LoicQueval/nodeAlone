@@ -7,15 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="e96b3c5e-2240-42d7-89d2-4ce557083360" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeAlone/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nodeAlone/index.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,12 +19,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nodeAlone/index.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+            <state>
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="e#83#113#0" expanded="true" />
               </folding>
@@ -43,17 +35,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
+            <state relative-caret-position="612">
               <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -61,8 +44,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="19" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="19" />
+            <state relative-caret-position="289">
+              <caret line="84" column="12" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -73,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
+            <state relative-caret-position="221">
               <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
@@ -139,12 +122,12 @@
         <option value="$PROJECT_DIR$/nodeAlone/hostels.model.ts" />
         <option value="$PROJECT_DIR$/Angular/src/app/create-room/rooms.model.ts" />
         <option value="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.html" />
-        <option value="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.ts" />
         <option value="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.scss" />
         <option value="$PROJECT_DIR$/nodeAlone/index.ts" />
         <option value="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.html" />
         <option value="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.scss" />
         <option value="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.ts" />
+        <option value="$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.ts" />
       </list>
     </option>
   </component>
@@ -160,7 +143,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -203,6 +185,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,9 +279,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.start" />
         <item itemvalue="npm.node" />
-        <item itemvalue="npm.deploy" />
         <item itemvalue="npm.ts" />
         <item itemvalue="npm.test" />
       </list>
@@ -340,7 +323,9 @@
       <workItem from="1560949708549" duration="10169000" />
       <workItem from="1561017594084" duration="10505000" />
       <workItem from="1561104533680" duration="19561000" />
-      <workItem from="1561363925742" duration="21081000" />
+      <workItem from="1561363925742" duration="21201000" />
+      <workItem from="1561450496030" duration="43000" />
+      <workItem from="1561450691144" duration="2967000" />
     </task>
     <task id="LOCAL-00001" summary="CV CSS">
       <created>1559053362129</created>
@@ -566,26 +551,33 @@
       <option name="project" value="LOCAL" />
       <updated>1561132080448</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Begin ForkJoin and reform code">
+      <created>1561393882093</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1561393882093</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="296551000" />
+    <option name="totallyTimeSpent" value="299681000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="1" sideWeight="0.399361" side_tool="true" visible="true" weight="0.15542677" />
+      <window_info id="npm" order="1" sideWeight="0.40095848" side_tool="true" visible="true" weight="0.15542677" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.600639" visible="true" weight="0.15542677" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.5990415" visible="true" weight="0.15542677" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.8861567" visible="true" weight="0.3217768" />
+      <window_info active="true" anchor="bottom" id="Run" order="5" sideWeight="0.8861567" visible="true" weight="0.3217768" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32936078" />
@@ -646,7 +638,8 @@
     <MESSAGE value="Edit" />
     <MESSAGE value="ForkIn" />
     <MESSAGE value="Menu déroulant with value undefined" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu déroulant with value undefined" />
+    <MESSAGE value="Begin ForkJoin and reform code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Begin ForkJoin and reform code" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/microServices/functions/package-lock.json">
@@ -988,30 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nodeAlone/index.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#83#113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -1026,9 +995,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nodeAlone/index.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="e#83#113#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
+        <state relative-caret-position="221">
           <caret line="17" column="2" selection-start-line="17" selection-start-column="2" selection-end-line="17" selection-end-column="2" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
@@ -1036,10 +1015,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="51" column="6" selection-start-line="51" selection-start-column="6" selection-end-line="51" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Angular/src/app/create-room/create-room.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="19" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="19" />
+        <state relative-caret-position="289">
+          <caret line="84" column="12" lean-forward="true" selection-start-line="84" selection-start-column="12" selection-end-line="84" selection-end-column="12" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
