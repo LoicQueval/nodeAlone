@@ -2,6 +2,7 @@ import bodyParser from 'body-parser'; // important pour faire fonctionner req.bo
 import express from "express";
 import {HostelsModel} from './hostels.model'
 import cors from "cors";
+import {RoomsModel} from "./rooms.model";
 
 const admin = require('firebase-admin');
 const serviceAccount = require('../nodeAlone/cle.json'); // bug path node '-'
@@ -15,37 +16,66 @@ admin.initializeApp({
 const db = admin.firestore();
 app.use(bodyParser());
 app.use(cors());
+
 const ref = db.collection('hostels');
+const ref2 = db.collection('rooms');
 
 
-app.get('/', async (req, res) => {
+app.get('/hostels', async (req, res) => {
     const hostels: HostelsModel[] = [];
     const hostelsref = await ref.get();
-    hostelsref.forEach((hostel: { data: () => HostelsModel }) => hostels.push(hostel.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
+    hostelsref.forEach((value: { data: () => HostelsModel; }) => hostels.push(value.data() as HostelsModel)); // hostel : ... Webstorm correction '-'
     res.send(hostels);
 });
 
+app.get('/rooms', async (req, res) => {
+    const rooms: RoomsModel[] = [];
+    const roomsref = await ref2.get();
+    roomsref.forEach((value: { data: () => RoomsModel; }) => rooms.push(value.data() as RoomsModel)); // hostel : ... Webstorm correction '-'
+    res.send(rooms);
+});
+
+app.get('/hostels/:id', async (req, res) => {
+    const ref = db.collection('hostels').doc(req.params.id);
+    const hostel = await ref.get();
+    res.send(hostel.data());
+});
+
+app.get('/hostels/:id/rooms', async (req, res) => {
+    const ref = db.collection('rooms').where('parent','==', req.params.id);
+    const roomsRef = await ref.get();
+    const rooms : RoomsModel[] = [];
+    roomsRef.forEach((room: { data: () => RoomsModel; }) => rooms.push(room.data() as RoomsModel));
+    res.send(rooms);
+});
+
 app.post('/add', async (req, res) => {
-    const body = req.body;
-    await ref.add(body);
-    res.send('post used')
+    const hostel: HostelsModel = req.body;
+    await ref.add(hostel);
+    res.send(hostel);
 });
 
-app.delete('/sup', async (req, res) => {
-    await ref.doc('YiYnO0YXmXmi4q664U1W').delete();
-    res.send('Hostel Delete')
+app.post('/rooms', async (req, res) => {
+    const room: RoomsModel = req.body;
+    await ref2.add(room);
+    res.send(room);
 });
 
-app.put('/:id', async (req, res) => {
+app.delete('/sup/:id', async (req, res) => {
+    await ref.doc(req.params.id).delete();
+    res.send()
+});
+
+app.put('/update/:id', async (req, res) => {
     const body2 = req.body;
     await ref.doc(req.params.id).update(body2);
-    res.send('update new hostel')
+    res.send()
 });
 
-app.patch('/modif', async (req, res) => {
+app.patch('/modif/:id', async (req, res) => {
     const body3 = req.body;
-    await ref.doc('QII35LKumAVGyypWNB2y').update(body3);
-    res.send('Modifier')
+    await ref.doc(req.params.id).update(body3);
+    res.send()
 });
 
 app.set('view engine', 'pug');

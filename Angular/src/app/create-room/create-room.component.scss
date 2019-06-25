@@ -1,0 +1,31 @@
+div{
+  padding: 16% 30%;
+  margin: 0 10%;
+  background-color: aqua;
+
+  div {
+    background-color: grey;
+    border: 2px solid black;
+    color: darkblue;
+    padding: 10px;
+    margin: 2%;
+  }
+
+  button {
+    margin: 0 0 5px 5px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+
+    select{
+      width: 205px;
+    }
+    input {
+      width: 200px;
+    }
+  }
+}
+

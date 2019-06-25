@@ -1,67 +1,110 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {HostelsModel} from "../hostels.model";
-import {Observable} from "rxjs";
 import {tap} from "rxjs/operators";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
-//import {HostelsModel} from "../../../../nodeAlone/hostels.model";
 
 @Component({
   selector: 'app-hostels',
   templateUrl: './hostels.component.html',
   styleUrls: ['./hostels.component.scss']
 })
-export class HostelsComponent implements OnInit {
-
-  constructor(private http: HttpClient) {
-  }
+export class HostelsComponent {
 
   hostels: HostelsModel[];
-  hostels$: Observable<HostelsModel[]>;
-/*
-  test() {
-    this.hostels$ = this.http.get<HostelsModel[]>("http://localhost:4000");
-    this.hostels$
-      .pipe(
-        tap((hostels: HostelsModel[]) => this.hostels = hostels)
-      )
-      .subscribe();
-    console.log("coucou")
+  hostelForm: FormGroup;
+  isLoading = false;
+  isReading = false;
+
+  constructor(
+    private http: HttpClient,
+    private fb: FormBuilder
+  ) {
   }
-*/
-  ngOnInit() {
 
-    this.hostels$ = this.http.get<HostelsModel[]>("http://localhost:4000");
-    this.hostels$
+  get name(){
+    return this.hostelForm.get('name')
+  }
+  get director(){
+    return this.hostelForm.get('director')
+  }
+  get stars(){
+    return this.hostelForm.get('stars')
+  }
+  get roomNumber(){
+    return this.hostelForm.get('roomNumber')
+  }
+
+  ngOnInit(): void {
+    this.initForm();
+  }
+
+  initForm() {
+    this.hostelForm = this.fb.group({
+      name: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      director: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      stars: [0, [Validators.required]],
+      roomNumber: [0, [Validators.required]],
+      pool: [false,[Validators.required]]
+    })
+  }
+
+  submitForm() {
+    console.log(this.hostelForm.value);
+    this.postHostel(this.hostelForm.value)
+  }
+
+  getHostels() {
+    this.isReading = !this.isReading;
+    //Read
+    return this.http.get<HostelsModel[]>("http://localhost:4000/hostels")
       .pipe(
-        tap((hostels: HostelsModel[]) => this.hostels = hostels)
+        tap(hostels => this.hostels = hostels)
       )
       .subscribe();
+  }
+
+  postHostel(hostel : HostelsModel) {
+    //CreateToNothing
+    this.isLoading = true;
+    this.http.post<HostelsModel[]>('http://localhost:4000/add', hostel)
+      .pipe(
+        tap(()=> this.isLoading = false)
+      )
+      .subscribe();
+  }
 
 
-    this.http.post('http://localhost:4000/add', {
+
+
+  test3() {
+    //Delete
+    this.http.delete<HostelsModel[]>('http://localhost:4000/sup/1QO7AgQpf5RABNGPI9Br')
+      .pipe()
+      .subscribe();
+  }
+
+  test4() {
+    //Update
+    this.http.put<HostelsModel[]>('http://localhost:4000/update/bnzY2faEXawvwhAR6I1n', {
       "name": "hotel des class",
       "director": "Sarida",
       "pool": true,
       "stars": 1,
-      "roomNumber": 42
-    })
-      .pipe()
-      .subscribe();
-
-
-    this.http.delete('http://localhost:4000/sup')
-      .pipe()
-      .subscribe();
-
-    this.http.put('http://localhost:4000/:id', {
-      "name": "hotel des class",
-      "director": "Sarida",
-      "pool": true,
-      "stars": 1,
-      "roomNumber": 42
+      "roomNumber": 123
     })
       .pipe()
       .subscribe();
   }
+
+  test5() {
+    //CreateToSomething
+    this.http.patch<HostelsModel[]>('http://localhost:4000/modif/bnzY2faEXawvwhAR6I1n', {
+      "name": "hotel des for",
+    })
+      .pipe()
+      .subscribe();
+  }
+
 }

@@ -1,0 +1,53 @@
+<div>
+  <div *ngIf="isLoading">CHARGEMENT !!!!!!!!</div>
+
+  <form [formGroup]="roomForm" (ngSubmit)="submitForm()">
+
+    <div *ngIf="roomForm.invalid && roomForm.dirty">ERROR FORMULAIRE!</div>
+
+    <ng-container *ngIf="!isLoading">
+
+      <label>Room Name
+        <input type="text" required formControlName="name">
+        <div *ngIf="name.invalid && name.dirty">Erreur Name</div>
+      </label>
+
+      <label>Your Name
+        <input type="text" required formControlName="peopleName">
+        <div *ngIf="peopleName.invalid && peopleName.dirty">Erreur director</div>
+      </label>
+
+      <label>Size Room
+        <input type="number" required formControlName="size">
+        <div *ngIf="size.invalid && size.dirty">Erreur Stars</div>
+      </label>
+
+
+      <label>In hostel
+        <select type="text" required formControlName="parent">
+          <option *ngFor="let hostel of hostels" [value]="hostel.uid">{{hostel.name}}</option>
+        </select>
+      </label>
+
+      <button (click)="roomForm.reset()" type="button">Reset</button>
+      <button type="submit">Valider</button>
+
+    </ng-container>
+
+  </form>
+
+
+  <button (click)="getRooms()">Read</button>
+  <button (click)="getRoomsBy()">Read2</button>
+
+
+  <ng-container *ngIf="isReading === true">
+    <div *ngFor="let rooms of rooms">
+      <strong>This is {{rooms.name}} room !</strong>
+      <p>Welcome {{rooms.peopleName}}</p>
+      <p>This is a {{rooms.size}} size room</p>
+      <p>The id is {{rooms.uid}}</p>
+    </div>
+  </ng-container>
+</div>
+<router-outlet></router-outlet>

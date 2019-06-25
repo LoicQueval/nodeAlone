@@ -25,30 +25,54 @@ const db = admin.firestore();
 app.use(body_parser_1.default());
 app.use(cors_1.default());
 const ref = db.collection('hostels');
-app.get('/', (req, res) => __awaiter(this, void 0, void 0, function* () {
+const ref2 = db.collection('rooms');
+app.get('/hostels', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const hostels = [];
     const hostelsref = yield ref.get();
-    hostelsref.forEach((hostel) => hostels.push(hostel.data())); // hostel : ... Webstorm correction '-'
+    hostelsref.forEach((value) => hostels.push(value.data())); // hostel : ... Webstorm correction '-'
     res.send(hostels);
 }));
+app.get('/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const rooms = [];
+    const roomsref = yield ref2.get();
+    roomsref.forEach((value) => rooms.push(value.data())); // hostel : ... Webstorm correction '-'
+    res.send(rooms);
+}));
+app.get('/hostels/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const ref = db.collection('hostels').doc(req.params.id);
+    const hostel = yield ref.get();
+    res.send(hostel.data());
+}));
+app.get('/hostels/:id/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const ref = db.collection('rooms').where('parent', '==', req.params.id);
+    const roomsRef = yield ref.get();
+    const rooms = [];
+    roomsRef.forEach((room) => rooms.push(room.data()));
+    res.send(rooms);
+}));
 app.post('/add', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const body = req.body;
-    yield ref.add(body);
-    res.send('post used');
+    const hostel = req.body;
+    yield ref.add(hostel);
+    res.send(hostel);
 }));
-app.delete('/sup', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    yield ref.doc('YiYnO0YXmXmi4q664U1W').delete();
-    res.send('Hostel Delete');
+app.post('/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const room = req.body;
+    yield ref2.add(room);
+    res.send(room);
 }));
-app.put('/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.delete('/sup/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    yield ref.doc(req.params.id).delete();
+    res.send();
+}));
+app.put('/update/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body2 = req.body;
     yield ref.doc(req.params.id).update(body2);
-    res.send('update new hostel');
+    res.send();
 }));
-app.patch('/modif', (req, res) => __awaiter(this, void 0, void 0, function* () {
+app.patch('/modif/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body3 = req.body;
-    yield ref.doc('QII35LKumAVGyypWNB2y').update(body3);
-    res.send('Modifier');
+    yield ref.doc(req.params.id).update(body3);
+    res.send();
 }));
 app.set('view engine', 'pug');
 app.use(express_1.default.static('views'));
