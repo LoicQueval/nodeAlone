@@ -75,12 +75,12 @@ export class CreateRoomComponent {
       .subscribe();
   }
 
-  getRoomsBy() {
+  getRoomsOfHostelById() {
     this.isReading = !this.isReading;
     //Read
     forkJoin([
-      this.httpClient.get("http://localhost:4000/hostels"),
-      this.httpClient.get("http://localhost:4000/rooms"),
+      this.httpClient.get("http://localhost:4000/hostels/:id"),
+      this.httpClient.get("http://localhost:4000/hostels/:id" + "/rooms"),
     ])
       .pipe(
         map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {
