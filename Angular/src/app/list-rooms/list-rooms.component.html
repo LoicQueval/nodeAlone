@@ -1,9 +1,16 @@
-<h1>cOUCOU</h1>
-<span>SALUT</span>
-<span>HELLO</span>
+<div>
+<button (click)="getRooms()">Read</button>
+<button (click)="getRoomsOfHostelById()">Read2</button>
 
-<p>
-  list-rooms works!
-</p>
+
+<ng-container *ngIf="isReading === true">
+  <div *ngFor="let rooms of rooms">
+    <strong>This is {{rooms.name}} room !</strong>
+    <p>Welcome {{rooms.peopleName}}</p>
+    <p>This is a {{rooms.size}} size room</p>
+    <p>The id is {{rooms.uid}}</p>
+  </div>
+</ng-container>
+</div>
 
 <router-outlet></router-outlet>
