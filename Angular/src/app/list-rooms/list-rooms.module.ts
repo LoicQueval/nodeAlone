@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {ListRoomsComponent} from "./list-rooms.component";
 import {RouterModule} from "@angular/router";
 import {ListRoomsRoutingModule} from "./list-rooms.routing.module";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import {ListRoomsRoutingModule} from "./list-rooms.routing.module";
   imports: [
     CommonModule,
     RouterModule,
-    ListRoomsRoutingModule
+    ListRoomsRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class ListRoomsModule {
