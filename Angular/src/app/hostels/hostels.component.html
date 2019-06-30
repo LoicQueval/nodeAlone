@@ -2,14 +2,12 @@
   <div *ngIf="isLoading">CHARGEMENT !!!!!!!!</div>
 
   <form [formGroup]="hostelForm" (ngSubmit)="submitForm()">
-
     <div
       *ngIf="name.invalid && name.dirty || director.invalid && director.dirty|| stars.invalid && stars.dirty|| roomNumber.invalid && roomNumber.dirty">
       ERROR FORMULAIRE!
     </div>
 
     <ng-container *ngIf="!isLoading">
-
       <label>Name
         <input type="text" required formControlName="name">
         <div *ngIf="name.invalid && name.dirty">Erreur Name</div>
@@ -47,9 +45,10 @@
       <p>Our director is {{hostels.director}}</p>
       <p>We are {{hostels.stars}} stars hostels with {{hostels.roomNumber}} rooms</p>
       <p>Is a pool ? : {{hostels.pool}}</p>
+      <button>Modifier</button>
+      <button (click)="deleteById()" [value]="hostels.uid">Supprimer</button>
     </div>
   </ng-container>
 
 </div>
 <router-outlet></router-outlet>
-

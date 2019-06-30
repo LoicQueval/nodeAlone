@@ -61,8 +61,14 @@ app.post('/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
     res.send(room);
 }));
 app.delete('/sup/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    yield ref.doc(req.params.id).delete();
-    res.send();
+    const ref = db.collection('hostels').doc(req.params.id);
+    const deleted = yield ref.delete();
+    res.send(deleted.data());
+}));
+app.delete('/sup2/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
+    const ref = db.collection('rooms').doc(req.params.id);
+    const deleted = yield ref.delete();
+    res.send(deleted.data());
 }));
 app.put('/update/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
     const body2 = req.body;

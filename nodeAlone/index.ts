@@ -62,8 +62,15 @@ app.post('/rooms', async (req, res) => {
 });
 
 app.delete('/sup/:id', async (req, res) => {
-    await ref.doc(req.params.id).delete();
-    res.send()
+    const ref = db.collection('hostels').doc(req.params.id);
+    const deleted = await ref.delete();
+    res.send(deleted.data())
+});
+
+app.delete('/sup2/:id', async (req, res) => {
+    const ref = db.collection('rooms').doc(req.params.id);
+    const deleted = await ref.delete();
+    res.send(deleted.data())
 });
 
 app.put('/update/:id', async (req, res) => {

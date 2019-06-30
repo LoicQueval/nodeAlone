@@ -2,11 +2,9 @@
   <div *ngIf="isLoading">CHARGEMENT !!!!!!!!</div>
 
   <form [formGroup]="roomForm" (ngSubmit)="submitForm()">
-
     <div *ngIf="roomForm.invalid && roomForm.dirty">ERROR FORMULAIRE!</div>
 
     <ng-container *ngIf="!isLoading">
-
       <label>Room Name
         <input type="text" required formControlName="name">
         <div *ngIf="name.invalid && name.dirty">Erreur Name</div>
@@ -22,7 +20,6 @@
         <div *ngIf="size.invalid && size.dirty">Erreur Stars</div>
       </label>
 
-
       <label>In hostel
         <select type="text" required formControlName="parent">
           <option *ngFor="let hostel of hostels" [value]="hostel.uid">{{hostel.name}}</option>
@@ -31,15 +28,10 @@
 
       <button (click)="roomForm.reset()" type="button">Reset</button>
       <button type="submit">Valider</button>
-
     </ng-container>
-
   </form>
 
-
   <button (click)="getRooms()">Read</button>
-  <button (click)="getRoomsOfHostelById()">Read2</button>
-
 
   <ng-container *ngIf="isReading === true">
     <div *ngFor="let rooms of rooms">
@@ -47,6 +39,8 @@
       <p>Welcome {{rooms.peopleName}}</p>
       <p>This is a {{rooms.size}} size room</p>
       <p>The id is {{rooms.uid}}</p>
+      <button>Modifier</button>
+      <button>Supprimer</button>
     </div>
   </ng-container>
 </div>

@@ -75,12 +75,9 @@ export class HostelsComponent {
       .subscribe();
   }
 
-
-
-
-  test3() {
+  deleteById() {
     //Delete
-    this.http.delete<HostelsModel[]>('http://localhost:4000/sup/1QO7AgQpf5RABNGPI9Br')
+    this.http.delete<HostelsModel[]>('http://localhost:4000/sup/:uid')
       .pipe()
       .subscribe();
   }

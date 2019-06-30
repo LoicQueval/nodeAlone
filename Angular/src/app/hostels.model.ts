@@ -1,5 +1,5 @@
 export interface HostelsModel {
-  id : number,
+  uid : string,
   name : string,
   director : string,
   stars: number,
