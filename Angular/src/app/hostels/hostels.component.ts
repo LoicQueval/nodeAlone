@@ -23,16 +23,19 @@ export class HostelsComponent {
   ) {
   }
 
-  get name(){
+  get name() {
     return this.hostelForm.get('name')
   }
-  get director(){
+
+  get director() {
     return this.hostelForm.get('director')
   }
-  get stars(){
+
+  get stars() {
     return this.hostelForm.get('stars')
   }
-  get roomNumber(){
+
+  get roomNumber() {
     return this.hostelForm.get('roomNumber')
   }
 
@@ -46,7 +49,7 @@ export class HostelsComponent {
       director: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       stars: [0, [Validators.required]],
       roomNumber: [0, [Validators.required]],
-      pool: [false,[Validators.required]]
+      pool: [false, [Validators.required]]
     })
   }
 
@@ -65,19 +68,19 @@ export class HostelsComponent {
       .subscribe();
   }
 
-  postHostel(hostel : HostelsModel) {
+  postHostel(hostel: HostelsModel) {
     //CreateToNothing
     this.isLoading = true;
     this.http.post<HostelsModel[]>('http://localhost:4000/add', hostel)
       .pipe(
-        tap(()=> this.isLoading = false)
+        tap(() => this.isLoading = false)
       )
       .subscribe();
   }
 
-  deleteById() {
+  deleteById(hostel: HostelsModel) {
     //Delete
-    this.http.delete<HostelsModel[]>('http://localhost:4000/sup/:uid')
+    return this.http.delete<HostelsModel[]>('http://localhost:4000/sup/' + hostel.uid)
       .pipe()
       .subscribe();
   }

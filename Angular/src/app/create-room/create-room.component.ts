@@ -99,4 +99,11 @@ export class CreateRoomComponent {
       )
       .subscribe();
   }
+
+  deleteById(room: RoomsModel) {
+    //Delete
+    return this.httpClient.delete<RoomsModel[]>('http://localhost:4000/sup2/' + room.uid)
+      .pipe()
+      .subscribe();
+  }
 }
