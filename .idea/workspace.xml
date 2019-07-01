@@ -6,22 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e96b3c5e-2240-42d7-89d2-4ce557083360" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-hostels/create-hostels.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-hostels/create-hostels.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-hostels/create-hostels.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-hostels/create-hostels.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels/hostels.routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/create-hostels/create-hostels.routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Angular/src/app/hostels.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Angular/src/app/hostels.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/Angular/src/app/hostels/hostels.component.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/Angular/src/app/hostels/hostels.component.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/microServices/functions/src/hostels.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/microServices/functions/src/hostels.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/microServices/functions/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/microServices/functions/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/nodeAlone/hostels.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/nodeAlone/hostels.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/microServices/functions/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/microServices/functions/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nodeAlone/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/nodeAlone/index.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -58,7 +42,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Angular/src/app/list-rooms/list-rooms.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
+            <state relative-caret-position="510">
               <caret line="54" column="45" lean-forward="true" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
@@ -491,11 +475,18 @@
       <option name="project" value="LOCAL" />
       <updated>1561975771580</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Put begin">
+      <created>1561995495278</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1561995495278</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="161737000" />
+    <option name="totallyTimeSpent" value="162211000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -564,7 +555,8 @@
     <MESSAGE value="ForkJoin done next Get hostels by id with form" />
     <MESSAGE value=" Get hostels by id with form" />
     <MESSAGE value="Delete complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Delete complete" />
+    <MESSAGE value="Put begin" />
+    <option name="LAST_COMMIT_MESSAGE" value="Put begin" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -890,7 +882,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Angular/src/app/list-rooms/list-rooms.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
+        <state relative-caret-position="510">
           <caret line="54" column="45" lean-forward="true" selection-start-line="54" selection-start-column="45" selection-end-line="54" selection-end-column="45" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
