@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'create-hostel',
-    loadChildren: './hostels/hostels.module#HostelsModule'
+    loadChildren: './create-hostels/create-hostels.module#CreateHostelsModule'
   },
   {
     path: 'list-rooms',

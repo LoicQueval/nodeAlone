@@ -21,10 +21,10 @@ let HostelsComponent = class HostelsComponent {
 };
 HostelsComponent = __decorate([
     core_1.Component({
-        selector: 'app-hostels',
-        templateUrl: './hostels.component.html',
-        styleUrls: ['./hostels.component.scss']
+        selector: 'app-create-hostels',
+        templateUrl: './create-create-hostels.component.html',
+        styleUrls: ['./create-create-hostels.component.scss']
     })
 ], HostelsComponent);
 exports.HostelsComponent = HostelsComponent;
-//# sourceMappingURL=hostels.component.js.map
+//# sourceMappingURL=create-hostels.component.js.map

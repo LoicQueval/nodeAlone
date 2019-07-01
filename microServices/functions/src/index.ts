@@ -5,7 +5,7 @@ import * as admin from 'firebase-admin';
 admin.initializeApp();
 
 exports.on_hostel_created = functions.firestore
-    .document('hostels/{hostelId}')
+    .document('create-hostels/{hostelId}')
     .onCreate((snap, context) => {
 
         const newHotel: HostelsModel = snap.data() as HostelsModel;

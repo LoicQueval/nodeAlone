@@ -39,7 +39,7 @@ app.get('/rooms', (req, res) => __awaiter(this, void 0, void 0, function* () {
     res.send(rooms);
 }));
 app.get('/hostels/:id', (req, res) => __awaiter(this, void 0, void 0, function* () {
-    const ref = db.collection('hostels').doc(req.params.id);
+    const ref = db.collection('create-hostels').doc(req.params.id);
     const hostel = yield ref.get();
     res.send(hostel.data());
 }));

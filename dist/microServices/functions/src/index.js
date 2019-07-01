@@ -11,7 +11,7 @@ const functions = __importStar(require("firebase-functions"));
 const admin = __importStar(require("firebase-admin"));
 admin.initializeApp();
 exports.createUser = functions.firestore
-    .document('hostels/{hostelId}')
+    .document('create-hostels/{hostelId}')
     .onCreate((snap, context) => {
     const newHotel = snap.data();
     newHotel.uId = snap.id;

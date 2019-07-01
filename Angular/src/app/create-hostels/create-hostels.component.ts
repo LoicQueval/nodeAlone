@@ -7,10 +7,10 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-hostels',
-  templateUrl: './hostels.component.html',
-  styleUrls: ['./hostels.component.scss']
+  templateUrl: './create-hostels.component.html',
+  styleUrls: ['./create-hostels.component.scss']
 })
-export class HostelsComponent {
+export class CreateHostelsComponent {
 
   hostels: HostelsModel[];
   hostelForm: FormGroup;
