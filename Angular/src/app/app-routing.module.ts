@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'list-rooms',
     loadChildren: './list-rooms/list-rooms.module#ListRoomsModule'
   },
+  {
+    path: 'edit',
+    loadChildren: './edit/edit.module#EditModule'
+  },
 ];
 
 @NgModule({

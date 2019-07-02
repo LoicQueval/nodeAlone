@@ -15,9 +15,9 @@ import { UpdateComponent } from './update/update.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    AppRoutingModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
