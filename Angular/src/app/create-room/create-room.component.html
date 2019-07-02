@@ -27,7 +27,7 @@
       </label>
 
       <button (click)="roomForm.reset()" type="button">Reset</button>
-      <button type="submit">Valider</button>
+      <button type="submit" [disabled]="!roomForm.valid">Valider</button>
     </ng-container>
   </form>
 

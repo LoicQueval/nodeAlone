@@ -36,15 +36,15 @@ app.get('/rooms', async (req, res) => {
 });
 
 app.get('/hostels/:id', async (req, res) => {
-    const ref = db.collection('create-hostels').doc(req.params.id);
+    const ref = db.collection('hostels').doc(req.params.id);
     const hostel = await ref.get();
     res.send(hostel.data());
 });
 
 app.get('/hostels/:id/rooms', async (req, res) => {
-    const ref = db.collection('rooms').where('parent','==', req.params.id);
+    const ref = db.collection('rooms').where('parent', '==', req.params.id);
     const roomsRef = await ref.get();
-    const rooms : RoomsModel[] = [];
+    const rooms: RoomsModel[] = [];
     roomsRef.forEach((room: { data: () => RoomsModel; }) => rooms.push(room.data() as RoomsModel));
     res.send(rooms);
 });

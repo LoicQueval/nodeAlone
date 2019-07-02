@@ -75,21 +75,6 @@ export class CreateRoomComponent {
       .subscribe();
   }
 
-  getRoomsOfHostelById() {
-    this.isReading = !this.isReading;
-    //Read
-    forkJoin([
-      this.httpClient.get("http://localhost:4000/hostels/:id"),
-      this.httpClient.get("http://localhost:4000/hostels/:id" + "/rooms"),
-    ])
-      .pipe(
-        map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {
-          return {...hostel, ...rooms}
-        }),
-      )
-      .subscribe()
-  }
-
   postRoom(room: RoomsModel) {
     //CreateToNothing
     this.isLoading = true;

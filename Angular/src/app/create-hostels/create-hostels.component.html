@@ -29,11 +29,11 @@
       </label>
 
       <label>Pool ?
-        <input type="checkbox" required formControlName="pool">
+        <input type="checkbox" required>
       </label>
 
       <button (click)="hostelForm.reset()" type="button">Reset</button>
-      <button type="submit">Valider</button>
+      <button type="submit" [disabled]="!hostelForm.valid">Valider</button>
     </ng-container>
   </form>
 

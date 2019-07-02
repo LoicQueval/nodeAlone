@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {HostelsModel, RoomsModel} from "../create-room/rooms.model";
 import {map, tap} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {forkJoin} from "rxjs";
 
 @Component({
@@ -14,18 +13,18 @@ export class ListRoomsComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
-    private fb: FormBuilder
-  ) {}
+  ) {
+  }
 
   rooms: RoomsModel[];
-  hostels: HostelsModel[];
-  roomForm: FormGroup;
+  hostels: HostelsModel;
   isLoading = false;
   isReading = false;
 
   ngOnInit(): void {
-   // this.initForm();
     this.getHostels();
+    this.getRoomsOfHostelById();
+
   }
 
   getHostels() {
@@ -33,7 +32,7 @@ export class ListRoomsComponent implements OnInit {
     //Read
     return this.httpClient.get<HostelsModel[]>("http://localhost:4000/hostels")
       .pipe(
-        tap(hostels => this.hostels = hostels)
+        tap(hostels => this.hostels = hostels as HostelsModel)
       )
       .subscribe();
   }
@@ -52,19 +51,16 @@ export class ListRoomsComponent implements OnInit {
     this.isReading = !this.isReading;
     //Read
     forkJoin([
-      this.httpClient.get("http://localhost:4000/hostels/:id"),
-      this.httpClient.get("http://localhost:4000/hostels/:id" + "/rooms"),
+      this.httpClient.get("http://localhost:4000/hostels/GrvlKccrCCBn8tZqT28V"),
+      this.httpClient.get("http://localhost:4000/hostels/GrvlKccrCCBn8tZqT28V/rooms"),
     ])
       .pipe(
         map(([hostel, rooms]: [HostelsModel, RoomsModel[]]) => {
-          return {...hostel, ...rooms}
+          return {...hostel,rooms}
         }),
+        tap(x=> console.log(x)),
+        tap(hostels => this.hostels = hostels as HostelsModel)
       )
       .subscribe()
   }
-
-  submitForm() {
-    console.log(this.roomForm.value);
-  }
-
 }
