@@ -3,6 +3,7 @@ import {HostelsModel, RoomsModel} from "../create-room/rooms.model";
 import {map, tap} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
 import {forkJoin} from "rxjs";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-list-rooms',
@@ -13,6 +14,7 @@ export class ListRoomsComponent implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
+    private afs : AngularFirestore,
   ) {
   }
 
@@ -30,7 +32,7 @@ export class ListRoomsComponent implements OnInit {
   getHostels() {
     this.isReading = !this.isReading;
     //Read
-    return this.httpClient.get<HostelsModel[]>("http://localhost:4000/hostels")
+    return this.httpClient.get<HostelsModel>("http://localhost:4000/hostels")
       .pipe(
         tap(hostels => this.hostels = hostels as HostelsModel)
       )

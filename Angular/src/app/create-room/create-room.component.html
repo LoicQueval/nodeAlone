@@ -1,5 +1,4 @@
 <div>
-  <div *ngIf="isLoading">CHARGEMENT !!!!!!!!</div>
 
   <form [formGroup]="roomForm" (ngSubmit)="submitForm()">
     <div *ngIf="roomForm.invalid && roomForm.dirty">ERROR FORMULAIRE!</div>

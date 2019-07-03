@@ -1,9 +1,8 @@
 import {Component} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {map, tap} from "rxjs/operators";
+import {tap} from "rxjs/operators";
 import {HostelsModel, RoomsModel} from "./rooms.model";
-import {forkJoin} from "rxjs";
 import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
@@ -54,13 +53,14 @@ export class CreateRoomComponent {
 
   submitForm() {
     console.log(this.roomForm.value);
-    this.postRoom(this.roomForm.value)
+    this.postRoom(this.roomForm.value);
+    this.isLoading = !this.isLoading
   }
 
   getRooms() {
     this.isReading = !this.isReading;
     //Read
-    return  this.afs.collection<HostelsModel>("rooms").valueChanges()
+    return this.afs.collection<RoomsModel>("rooms").valueChanges()
       .pipe(
         tap(rooms => this.rooms = rooms)
       )
@@ -68,9 +68,8 @@ export class CreateRoomComponent {
   }
 
   getHostels() {
-    this.isReading = !this.isReading;
     //Read
-    return  this.afs.collection<HostelsModel>("hostels").valueChanges()
+    return this.afs.collection<HostelsModel>("hostels").valueChanges()
       .pipe(
         tap(hostels => this.hostels = hostels)
       )
@@ -78,19 +77,13 @@ export class CreateRoomComponent {
   }
 
   postRoom(room: RoomsModel) {
-    //CreateToNothing
     this.isLoading = true;
-    this.httpClient.post<RoomsModel[]>('http://localhost:4000/rooms', room)
-      .pipe(
-        tap(() => this.isLoading = false)
-      )
-      .subscribe();
+    //CreateToNothing
+    return this.afs.collection("rooms").add(room);
   }
 
   deleteById(room: RoomsModel) {
     //Delete
-    return this.httpClient.delete<RoomsModel[]>('http://localhost:4000/sup2/' + room.uid)
-      .pipe()
-      .subscribe();
+    return this.afs.collection("rooms").doc(room.uid).delete()
   }
 }

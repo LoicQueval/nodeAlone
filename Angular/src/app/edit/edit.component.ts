@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {FormBuilder} from "@angular/forms";
 import {AngularFirestore} from "@angular/fire/firestore";
 import {tap} from "rxjs/operators";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-edit',
@@ -14,12 +15,20 @@ export class EditComponent implements OnInit {
 
   isReading = false;
   hostels: HostelsModel[];
+  id: string;
 
   constructor(
     private httpClient: HttpClient,
     private fb: FormBuilder,
     private afs: AngularFirestore,
+    private route: ActivatedRoute,
   ) {
+  }
+
+  ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
+    this.getHostels()
   }
 
   getHostels() {
@@ -31,9 +40,5 @@ export class EditComponent implements OnInit {
         tap(hostels => this.hostels = hostels)
       )
       .subscribe();
-  }
-
-  ngOnInit() {
-    this.getHostels()
   }
 }

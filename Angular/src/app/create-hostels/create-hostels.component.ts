@@ -71,21 +71,17 @@ export class CreateHostelsComponent {
   }
 
   postHostel(hostel: HostelsModel) {
+
     //CreateToNothing
-    this.isLoading = true;
-    this.httpClient.post<HostelsModel[]>('http://localhost:4000/add', hostel)
-      .pipe(
-        tap(() => this.isLoading = false)
-      )
-      .subscribe();
+    return this.afs.collection("hostels").add(hostel)
   }
 
   deleteById(hostel: HostelsModel) {
     //Delete
-    return this.afs.collection<HostelsModel[]>("hostels").valueChanges()
-      .pipe()
-      .subscribe();
+    return this.afs.collection("hostels").doc(hostel.uid).delete()
   }
+
+
 
   test4() {
     //Update
