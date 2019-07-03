@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {map, tap} from "rxjs/operators";
 import {HostelsModel, RoomsModel} from "./rooms.model";
 import {forkJoin} from "rxjs";
+import {AngularFirestore} from "@angular/fire/firestore";
 
 @Component({
   selector: 'app-create-room',
@@ -20,7 +21,8 @@ export class CreateRoomComponent {
 
   constructor(
     private httpClient: HttpClient,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private afs: AngularFirestore
   ) {
   }
 
@@ -58,7 +60,7 @@ export class CreateRoomComponent {
   getRooms() {
     this.isReading = !this.isReading;
     //Read
-    return this.httpClient.get<RoomsModel[]>("http://localhost:4000/rooms ")
+    return  this.afs.collection<HostelsModel>("rooms").valueChanges()
       .pipe(
         tap(rooms => this.rooms = rooms)
       )
@@ -68,7 +70,7 @@ export class CreateRoomComponent {
   getHostels() {
     this.isReading = !this.isReading;
     //Read
-    return this.httpClient.get<HostelsModel[]>("http://localhost:4000/hostels")
+    return  this.afs.collection<HostelsModel>("hostels").valueChanges()
       .pipe(
         tap(hostels => this.hostels = hostels)
       )

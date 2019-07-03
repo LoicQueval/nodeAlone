@@ -46,7 +46,7 @@
       <p>We are {{hostel.stars}} stars hostels with {{hostel.roomNumber}} rooms</p>
       <p>Is a pool ? : {{hostel.pool}}</p>
       <button type="button" (click)="deleteById(hostel)">Supprimer</button>
-      <button>Modifier</button>
+      <button [routerLink]="'/edit/' + hostel.uid"> editer </button>
     </div>
   </ng-container>
 

@@ -1,8 +1,9 @@
 import {Component} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {HostelsModel} from "../hostels.model";
-import {tap} from "rxjs/operators";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {HttpClient} from "@angular/common/http"; //Requête avec Node
+import {HostelsModel} from "../hostels.model"; //Models
+import {tap} from "rxjs/operators"; //Observable
+import {FormBuilder, FormGroup, Validators} from "@angular/forms"; //Formulaire
+import {AngularFirestore} from "@angular/fire/firestore";
 
 
 @Component({
@@ -18,8 +19,9 @@ export class CreateHostelsComponent {
   isReading = false;
 
   constructor(
-    private http: HttpClient,
-    private fb: FormBuilder
+    private httpClient: HttpClient,
+    private fb: FormBuilder,
+    private afs: AngularFirestore,
   ) {
   }
 
@@ -61,7 +63,7 @@ export class CreateHostelsComponent {
   getHostels() {
     this.isReading = !this.isReading;
     //Read
-    return this.http.get<HostelsModel[]>("http://localhost:4000/hostels")
+    return this.afs.collection<HostelsModel>("hostels").valueChanges()
       .pipe(
         tap(hostels => this.hostels = hostels)
       )
@@ -71,7 +73,7 @@ export class CreateHostelsComponent {
   postHostel(hostel: HostelsModel) {
     //CreateToNothing
     this.isLoading = true;
-    this.http.post<HostelsModel[]>('http://localhost:4000/add', hostel)
+    this.httpClient.post<HostelsModel[]>('http://localhost:4000/add', hostel)
       .pipe(
         tap(() => this.isLoading = false)
       )
@@ -80,14 +82,14 @@ export class CreateHostelsComponent {
 
   deleteById(hostel: HostelsModel) {
     //Delete
-    return this.http.delete<HostelsModel[]>('http://localhost:4000/sup/' + hostel.uid)
+    return this.afs.collection<HostelsModel[]>("hostels").valueChanges()
       .pipe()
       .subscribe();
   }
 
   test4() {
     //Update
-    this.http.put<HostelsModel[]>('http://localhost:4000/update/bnzY2faEXawvwhAR6I1n', {
+    this.httpClient.put<HostelsModel[]>('http://localhost:4000/update/bnzY2faEXawvwhAR6I1n', {
       "name": "hotel des class",
       "director": "Sarida",
       "pool": true,
@@ -100,7 +102,7 @@ export class CreateHostelsComponent {
 
   test5() {
     //CreateToSomething
-    this.http.patch<HostelsModel[]>('http://localhost:4000/modif/bnzY2faEXawvwhAR6I1n', {
+    this.httpClient.patch<HostelsModel[]>('http://localhost:4000/modif/bnzY2faEXawvwhAR6I1n', {
       "name": "hotel des for",
     })
       .pipe()

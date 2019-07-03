@@ -7,7 +7,7 @@ import { EditComponent } from './edit.component';
   declarations: [EditComponent],
   imports: [
     CommonModule,
-    EditRoutingModule
+    EditRoutingModule,
   ]
 })
 export class EditModule { }

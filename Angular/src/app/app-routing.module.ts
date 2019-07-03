@@ -15,7 +15,7 @@ const routes: Routes = [
     loadChildren: './list-rooms/list-rooms.module#ListRoomsModule'
   },
   {
-    path: 'edit',
+    path: 'edit/:id',
     loadChildren: './edit/edit.module#EditModule'
   },
 ];
