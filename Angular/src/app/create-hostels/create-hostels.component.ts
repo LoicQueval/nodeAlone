@@ -71,38 +71,22 @@ export class CreateHostelsComponent {
   }
 
   postHostel(hostel: HostelsModel) {
-
     //CreateToNothing
     return this.afs.collection("hostels").add(hostel)
   }
 
-  deleteById(hostel: HostelsModel) {
+  deleteById(hostel : HostelsModel) {
     //Delete
-    return this.afs.collection("hostels").doc(hostel.uid).delete()
+  return this.afs.collection("hostels").doc(hostel.uid).delete()
   }
 
-
-
-  test4() {
+  test4(hostel: HostelsModel) {
     //Update
-    this.httpClient.put<HostelsModel[]>('http://localhost:4000/update/bnzY2faEXawvwhAR6I1n', {
-      "name": "hotel des class",
-      "director": "Sarida",
-      "pool": true,
-      "stars": 1,
-      "roomNumber": 123
-    })
-      .pipe()
-      .subscribe();
+    return this.afs.collection("hostels").doc(hostel.uid).set(hostel)
   }
 
-  test5() {
+  test5(hostel: HostelsModel) {
     //CreateToSomething
-    this.httpClient.patch<HostelsModel[]>('http://localhost:4000/modif/bnzY2faEXawvwhAR6I1n', {
-      "name": "hotel des for",
-    })
-      .pipe()
-      .subscribe();
+    return this.afs.collection("hostels").doc(hostel.uid).update(hostel)
   }
-
 }

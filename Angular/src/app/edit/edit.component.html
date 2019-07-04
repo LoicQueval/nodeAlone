@@ -1,3 +1,40 @@
+<div>
+  <form [formGroup]="hostelForm" (ngSubmit)="submitForm()">
+    <div
+      *ngIf="name.invalid && name.dirty || director.invalid && director.dirty|| stars.invalid && stars.dirty|| roomNumber.invalid && roomNumber.dirty">
+      ERROR FORMULAIRE!
+    </div>
+
+      <label>Name
+        <input type="text" required formControlName="name">
+        <div *ngIf="name.invalid && name.dirty">Erreur Name</div>
+      </label>
+
+      <label>Director
+        <input type="text" required formControlName="director">
+        <div *ngIf="director.invalid && director.dirty">Erreur director</div>
+      </label>
+
+      <label>Stars
+        <input type="number" required formControlName="stars">
+        <div *ngIf="stars.invalid && stars.dirty">Erreur Stars</div>
+      </label>
+
+      <label>RoomNumber
+        <input type="number" required formControlName="roomNumber">
+        <div *ngIf="roomNumber.invalid && roomNumber.dirty">Erreur RoomNumber</div>
+      </label>
+
+      <label>Pool ?
+        <input type="checkbox" required>
+      </label>
+
+      <button (click)="hostelForm.reset()" type="button">Reset</button>
+      <button type="submit" [disabled]="!hostelForm.valid">Valider</button>
+  </form>
+</div>
+
 <ul>
-  <li *ngFor="let hostel of hostels">{{hostel.name}}</li>
+  <li *ngFor="let hostel of hostels">{{hostel.name}} {{hostel.director}}</li>
 </ul>
+

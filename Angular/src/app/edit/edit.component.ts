@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HostelsModel} from "../hostels.model";
 import {HttpClient} from "@angular/common/http";
-import {FormBuilder} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularFirestore} from "@angular/fire/firestore";
 import {tap} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
@@ -16,6 +16,7 @@ export class EditComponent implements OnInit {
   isReading = false;
   hostels: HostelsModel[];
   id: string;
+  hostelForm: FormGroup;
 
   constructor(
     private httpClient: HttpClient,
@@ -23,6 +24,37 @@ export class EditComponent implements OnInit {
     private afs: AngularFirestore,
     private route: ActivatedRoute,
   ) {
+  }
+
+  get name() {
+    return this.hostelForm.get('name')
+  }
+
+  get director() {
+    return this.hostelForm.get('director')
+  }
+
+  get stars() {
+    return this.hostelForm.get('stars')
+  }
+
+  get roomNumber() {
+    return this.hostelForm.get('roomNumber')
+  }
+
+  initForm() {
+    this.hostelForm = this.fb.group({
+      name: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      director: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      stars: [0, [Validators.required]],
+      roomNumber: [0, [Validators.required]],
+      pool: [false, [Validators.required]]
+    })
+  }
+
+  submitForm() {
+    console.log(this.hostelForm.value);
+    this.postHostel(this.hostelForm.value)
   }
 
   ngOnInit() {
@@ -40,5 +72,10 @@ export class EditComponent implements OnInit {
         tap(hostels => this.hostels = hostels)
       )
       .subscribe();
+  }
+
+  postHostel(hostel: HostelsModel) {
+    //CreateToNothing
+    return this.afs.collection("hostels").add(hostel)
   }
 }

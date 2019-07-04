@@ -32,7 +32,7 @@ export class ListRoomsComponent implements OnInit {
   getHostels() {
     this.isReading = !this.isReading;
     //Read
-    return this.httpClient.get<HostelsModel>("http://localhost:4000/hostels")
+    return this.afs.collection("hostels").valueChanges()
       .pipe(
         tap(hostels => this.hostels = hostels as HostelsModel)
       )
