@@ -57,7 +57,7 @@ export class CreateHostelsComponent {
 
   submitForm() {
     console.log(this.hostelForm.value);
-    this.postHostel(this.hostelForm.value)
+    return this.postHostel(this.hostelForm.value)
   }
 
   getHostels() {

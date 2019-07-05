@@ -47,10 +47,10 @@ export class EditComponent implements OnInit {
     this.id = this.route.snapshot.params.id;
     console.log(this.id);
     this.getHostels();
-    this.initForm({});
+    this._initForm({});
   }
 
-  initForm(hostel: HostelsModel) {
+  private _initForm(hostel: HostelsModel) {
     this.hostelForm = this.fb.group({
       name: [hostel.name, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       director: [hostel.director, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
@@ -71,7 +71,7 @@ export class EditComponent implements OnInit {
     return this.afs.collection("hostels").doc<HostelsModel>(this.id).valueChanges()
       .pipe(
         tap(hostels => this.hostels = hostels),
-        tap(() => this.initForm(this.hostels)),
+        tap(() => this._initForm(this.hostels)),
       )
       .subscribe();
   }
