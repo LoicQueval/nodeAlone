@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e96b3c5e-2240-42d7-89d2-4ce557083360" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/edit/edit.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/edit/edit.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/edit/edit.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/edit/edit.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/edit/edit.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/edit/edit.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/hostels.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/hostels.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Angular/src/app/list-rooms/list-rooms.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Angular/src/app/list-rooms/list-rooms.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -68,8 +63,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Angular/src/app/edit/edit.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="892">
-              <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+            <state relative-caret-position="42">
+              <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
               </folding>
@@ -105,6 +100,9 @@
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="ad62a907-b879-4200-9670-c83b55f6e68a" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -251,7 +249,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="settings.github" />
     <property name="ts.external.directory.path" value="C:\Users\WR2\WebstormProjects\nodealone\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
@@ -370,7 +368,7 @@
       <workItem from="1562313311290" duration="19000" />
       <workItem from="1562313504422" duration="288000" />
       <workItem from="1562316659535" duration="1371000" />
-      <workItem from="1562318100404" duration="10799000" />
+      <workItem from="1562318100404" duration="11146000" />
     </task>
     <task id="LOCAL-00001" summary="CV CSS">
       <created>1559053362129</created>
@@ -561,11 +559,18 @@
       <option name="project" value="LOCAL" />
       <updated>1562257313281</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="CRUD with End (Fork join with afs to do)">
+      <created>1562336654346</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1562336654346</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="230745000" />
+    <option name="totallyTimeSpent" value="231092000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -638,7 +643,8 @@
     <MESSAGE value="ForkJoin end" />
     <MESSAGE value="afs transition get post delete" />
     <MESSAGE value="Form Edit Update by Hostel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Form Edit Update by Hostel" />
+    <MESSAGE value="CRUD with End (Fork join with afs to do)" />
+    <option name="LAST_COMMIT_MESSAGE" value="CRUD with End (Fork join with afs to do)" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Angular/tsconfig.json">
@@ -1009,8 +1015,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Angular/src/app/edit/edit.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="892">
-          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+        <state relative-caret-position="42">
+          <caret line="16" column="20" lean-forward="true" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="20" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
           </folding>
