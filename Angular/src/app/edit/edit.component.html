@@ -29,12 +29,6 @@
         <input type="checkbox" required>
       </label>
 
-      <button (click)="hostelForm.reset()" type="button">Reset</button>
-      <button type="submit" [disabled]="!hostelForm.valid">Valider</button>
+      <button type="submit" [disabled]="!hostelForm.valid">Modifier</button>
   </form>
 </div>
-
-<ul>
-  <li *ngFor="let hostel of hostels">{{hostel.name}} {{hostel.director}}</li>
-</ul>
-

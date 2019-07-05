@@ -5,6 +5,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AngularFirestore} from "@angular/fire/firestore";
 import {tap} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
+import {from} from "rxjs";
 
 @Component({
   selector: 'app-edit',
@@ -14,7 +15,7 @@ import {ActivatedRoute} from "@angular/router";
 export class EditComponent implements OnInit {
 
   isReading = false;
-  hostels: HostelsModel[];
+  hostels: HostelsModel;
   id: string;
   hostelForm: FormGroup;
 
@@ -42,40 +43,51 @@ export class EditComponent implements OnInit {
     return this.hostelForm.get('roomNumber')
   }
 
-  initForm() {
+  ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    console.log(this.id);
+    this.getHostels();
+    this.initForm({});
+  }
+
+  initForm(hostel: HostelsModel) {
     this.hostelForm = this.fb.group({
-      name: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      director: ["", [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
-      stars: [0, [Validators.required]],
-      roomNumber: [0, [Validators.required]],
-      pool: [false, [Validators.required]]
+      name: [hostel.name, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      director: [hostel.director, [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
+      stars: [hostel.stars, [Validators.required]],
+      roomNumber: [hostel.roomNumber, [Validators.required]],
+      pool: [hostel.pool, [Validators.required]]
     })
   }
 
   submitForm() {
     console.log(this.hostelForm.value);
-    this.postHostel(this.hostelForm.value)
-  }
-
-  ngOnInit() {
-    this.id = this.route.snapshot.params.id;
-    console.log(this.id);
-    this.getHostels()
+    return this.save()
   }
 
   getHostels() {
     this.isReading = !this.isReading;
     //Read
-    return this.afs.collection<HostelsModel>("hostels").valueChanges()
+    return this.afs.collection("hostels").doc<HostelsModel>(this.id).valueChanges()
       .pipe(
-        tap(x => console.log(x)),
-        tap(hostels => this.hostels = hostels)
+        tap(hostels => this.hostels = hostels),
+        tap(() => this.initForm(this.hostels)),
       )
       .subscribe();
   }
 
-  postHostel(hostel: HostelsModel) {
-    //CreateToNothing
-    return this.afs.collection("hostels").add(hostel)
+  save() {
+    //Modifier
+    from(this.afs.collection("hostels").doc(this.id).set(
+      {
+        name: this.hostelForm.value.name,
+        roomNumber: this.hostelForm.value.roomNumber,
+        director: this.hostelForm.value.director,
+        stars: this.hostelForm.value.stars,
+        pool: this.hostelForm.value.pool
+      },
+      {merge: true} // Astuce fait comme un update
+    ))
+      .subscribe();
   }
 }

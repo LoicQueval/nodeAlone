@@ -5,11 +5,13 @@ import { EditComponent } from './edit.component';
  import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
-  declarations: [EditComponent],
+  declarations: [
+    EditComponent
+  ],
   imports: [
     CommonModule,
     EditRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ]
 })
 export class EditModule { }

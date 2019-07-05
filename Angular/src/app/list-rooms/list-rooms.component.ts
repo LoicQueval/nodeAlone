@@ -20,7 +20,6 @@ export class ListRoomsComponent implements OnInit {
 
   rooms: RoomsModel[];
   hostels: HostelsModel;
-  isLoading = false;
   isReading = false;
 
   ngOnInit(): void {
